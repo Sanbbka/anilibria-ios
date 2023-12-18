@@ -1,6 +1,5 @@
 import DITranquillity
 import Kingfisher
-import Localize_Swift
 import UIKit
 
 public protocol DependenciesConfiguration: AnyObject {
@@ -27,7 +26,6 @@ public class DependenciesConfigurationBase: DependenciesConfiguration, Loggable 
 
     public func setup() {
         self.setupMetrica()
-        self.setupLocalize()
         self.setupLoader()
         self.setupModulesDependencies()
     }
@@ -41,10 +39,6 @@ public class DependenciesConfigurationBase: DependenciesConfiguration, Loggable 
         let swiftyLogger = SimpleLogger()
         logger.setupLogger(swiftyLogger)
         Logger.setSharedInstance(logger)
-    }
-
-    private func setupLocalize() {
-        Localize.setCurrentLanguage(Language.ru.rawValue)
     }
 
     private func setupLoader() {
