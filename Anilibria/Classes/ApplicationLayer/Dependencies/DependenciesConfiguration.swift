@@ -2,10 +2,6 @@ import DITranquillity
 import Kingfisher
 import Localize_Swift
 import UIKit
-#if targetEnvironment(macCatalyst)
-#else
-import YandexMobileMetrica
-#endif
 
 public protocol DependenciesConfiguration: AnyObject {
     func setup()
@@ -37,12 +33,6 @@ public class DependenciesConfigurationBase: DependenciesConfiguration, Loggable 
     }
 
     private func setupMetrica() {
-        #if targetEnvironment(macCatalyst)
-        #else
-        if let config = YMMYandexMetricaConfiguration(apiKey: Keys.yandexMetricaApiKey) {
-            YMMYandexMetrica.activate(with: config)
-        }
-        #endif
     }
 
     private func setupModulesDependencies() {

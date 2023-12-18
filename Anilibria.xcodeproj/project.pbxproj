@@ -49,14 +49,10 @@
 		46A4DAB029179EDA003944FD /* CollectionContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A4DAAF29179EDA003944FD /* CollectionContext.swift */; };
 		46A4DAB22917A0D5003944FD /* BaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A4DAB12917A0D5003944FD /* BaseCollectionViewController.swift */; };
 		46A4DAB72917DF82003944FD /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A4DAB62917DF82003944FD /* LeftAlignedCollectionViewFlowLayout.swift */; };
-		46B82AAE2971A2DE003E450B /* YandexMobileMetrica.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B82AA929718FB9003E450B /* YandexMobileMetrica.xcframework */; platformFilter = ios; };
-		46B82AAF2971A2DE003E450B /* YandexMobileMetrica.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 46B82AA929718FB9003E450B /* YandexMobileMetrica.xcframework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		46B82AB12971A2E0003E450B /* YandexMobileMetricaCrashes.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 46B82AAA29718FB9003E450B /* YandexMobileMetricaCrashes.xcframework */; platformFilter = ios; };
-		46B82AB22971A2E0003E450B /* YandexMobileMetricaCrashes.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 46B82AAA29718FB9003E450B /* YandexMobileMetricaCrashes.xcframework */; platformFilter = ios; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		46F8FA9029731B49002B792B /* UIInterfaceOrientationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F8FA8F29731B49002B792B /* UIInterfaceOrientationExtension.swift */; };
 		478A6478D7BA4AB1DDDE943D972AF32F /* MRCommentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02207B1DF4B17181B8FAA6CB086229E /* MRCommentsView.swift */; };
 		4880C22723DACE23006FABE1 /* MacApp.m in Sources */ = {isa = PBXBuildFile; fileRef = 4880C22623DACE23006FABE1 /* MacApp.m */; };
-		4880C22C23DAD192006FABE1 /* MacBundle.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 4880C21F23DACDCD006FABE1 /* MacBundle.bundle */; platformFilter = maccatalyst; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4880C22C23DAD192006FABE1 /* MacBundle.bundle in Embed PlugIns */ = {isa = PBXBuildFile; fileRef = 4880C21F23DACDCD006FABE1 /* MacBundle.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4880C23123DAD4F9006FABE1 /* MacOSHalper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4880C23023DAD4F9006FABE1 /* MacOSHalper.swift */; };
 		4A4930D0C15FDD33BF0AA9C25AA80446 /* MRFeedAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E28DF9D86342A4DFFB91E4C96C2319A9 /* MRFeedAssembly.swift */; };
 		4B63C6CF77AD2AD85F8CFC6802C4A93E /* MRPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF19013FCF059774F41D154CF85A5CC8 /* MRPlayerView.swift */; };
@@ -375,8 +371,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				46B82AB22971A2E0003E450B /* YandexMobileMetricaCrashes.xcframework in Embed Frameworks */,
-				46B82AAF2971A2DE003E450B /* YandexMobileMetrica.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,8 +420,6 @@
 		46A4DAAF29179EDA003944FD /* CollectionContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionContext.swift; sourceTree = "<group>"; };
 		46A4DAB12917A0D5003944FD /* BaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewController.swift; sourceTree = "<group>"; };
 		46A4DAB62917DF82003944FD /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
-		46B82AA929718FB9003E450B /* YandexMobileMetrica.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = YandexMobileMetrica.xcframework; sourceTree = "<group>"; };
-		46B82AAA29718FB9003E450B /* YandexMobileMetricaCrashes.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = YandexMobileMetricaCrashes.xcframework; sourceTree = "<group>"; };
 		46F8FA8F29731B49002B792B /* UIInterfaceOrientationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIInterfaceOrientationExtension.swift; sourceTree = "<group>"; };
 		4880C21F23DACDCD006FABE1 /* MacBundle.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacBundle.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		4880C22123DACDCD006FABE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -766,8 +758,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				46B82AB12971A2E0003E450B /* YandexMobileMetricaCrashes.xcframework in Frameworks */,
-				46B82AAE2971A2DE003E450B /* YandexMobileMetrica.xcframework in Frameworks */,
 				C7B0F2CC22D6F0B100540CA9 /* WebKit.framework in Frameworks */,
 				F9734546F0F72F2E42920767 /* Pods_Anilibria.framework in Frameworks */,
 			);
@@ -893,15 +883,6 @@
 				46A4DAB62917DF82003944FD /* LeftAlignedCollectionViewFlowLayout.swift */,
 			);
 			path = Layouts;
-			sourceTree = "<group>";
-		};
-		46B82AA829718FB9003E450B /* xcframeworks */ = {
-			isa = PBXGroup;
-			children = (
-				46B82AA929718FB9003E450B /* YandexMobileMetrica.xcframework */,
-				46B82AAA29718FB9003E450B /* YandexMobileMetricaCrashes.xcframework */,
-			);
-			path = xcframeworks;
 			sourceTree = "<group>";
 		};
 		4880C22023DACDCD006FABE1 /* MacBundle */ = {
@@ -1381,7 +1362,6 @@
 			children = (
 				C7D4624122CC73DF00E763DF /* Anilibria */,
 				4880C22023DACDCD006FABE1 /* MacBundle */,
-				46B82AA829718FB9003E450B /* xcframeworks */,
 				C7D4624022CC73DF00E763DF /* Products */,
 				145B3CB0E3CCAC0C61FA629B /* Pods */,
 				1E00FA7C1790713686A9CDAF /* Frameworks */,
@@ -2078,8 +2058,9 @@
 		C7D4623722CC73DF00E763DF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1020;
-				LastUpgradeCheck = 1410;
+				LastUpgradeCheck = 1500;
 				ORGANIZATIONNAME = "Иван Морозов";
 				TargetAttributes = {
 					4880C21E23DACDCD006FABE1 = {
@@ -2239,7 +2220,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which strings >/dev/null; then\nswiftgen run strings \"${SRCROOT}/${PROJECT_NAME}/Resources/Localize/ru.lproj/Localizable.strings\" --output \"${SRCROOT}/${PROJECT_NAME}/Resources/Localize/Localizable.swift\" -p \"${SRCROOT}/${PROJECT_NAME}/Resources/Localize/strings-swift4.stencil\"\nelse\necho \"warning: SwiftGen not installed, download from https://github.com/SwiftGen/SwiftGen\"\nfi\n";
+			shellScript = "
+";
 		};
 		C7D4634222CC790900E763DF /* Lint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2596,7 +2578,6 @@
 /* Begin PBXTargetDependency section */
 		4880C22E23DAD192006FABE1 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			platformFilter = maccatalyst;
 			target = 4880C21E23DACDCD006FABE1 /* MacBundle */;
 			targetProxy = 4880C22D23DAD192006FABE1 /* PBXContainerItemProxy */;
 		};
@@ -2629,11 +2610,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
-				DEVELOPMENT_TEAM = 9P3CNK2626;
+				DEVELOPMENT_TEAM = UBXCC45PP4;
 				INFOPLIST_FILE = MacBundle/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = com.allui.MacBundle;
+				PRODUCT_BUNDLE_IDENTIFIER = alx.com.allui.MacBundle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -2649,11 +2630,11 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = NO;
-				DEVELOPMENT_TEAM = 9P3CNK2626;
+				DEVELOPMENT_TEAM = UBXCC45PP4;
 				INFOPLIST_FILE = MacBundle/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
 				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = com.allui.MacBundle;
+				PRODUCT_BUNDLE_IDENTIFIER = alx.com.allui.MacBundle;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -2701,6 +2682,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -2764,6 +2746,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -2790,23 +2773,24 @@
 				CODE_SIGN_ENTITLEMENTS = Anilibria/Anilibria.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 46;
-				DEVELOPMENT_TEAM = 9P3CNK2626;
+				DEVELOPMENT_TEAM = UBXCC45PP4;
 				INFOPLIST_FILE = "$(SRCROOT)/Anilibria/Resources/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Anilibria;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2.1;
-				PRODUCT_BUNDLE_IDENTIFIER = tv.anilibria.anilibria;
+				PRODUCT_BUNDLE_IDENTIFIER = alx.tv.anilibria.anilibria;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+				TVOS_DEPLOYMENT_TARGET = 17.0;
 			};
 			name = Debug;
 		};
@@ -2818,24 +2802,25 @@
 				CODE_SIGN_ENTITLEMENTS = Anilibria/Anilibria.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 46;
-				DEVELOPMENT_TEAM = 9P3CNK2626;
+				DEVELOPMENT_TEAM = UBXCC45PP4;
 				INFOPLIST_FILE = "$(SRCROOT)/Anilibria/Resources/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Anilibria;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2.1;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = tv.anilibria.anilibria;
+				PRODUCT_BUNDLE_IDENTIFIER = alx.tv.anilibria.anilibria;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "appletvos appletvsimulator iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,3";
+				TVOS_DEPLOYMENT_TARGET = 17.0;
 			};
 			name = Release;
 		};
