@@ -1,4 +1,4 @@
-public struct LinksRequest: BackendAPIRequest {
+struct LinksRequest: BackendAPIRequest {
     typealias ResponseObject = [LinkData]
 
     private(set) var endpoint: String = "/public/api/index.php"

@@ -18,6 +18,8 @@
 		2B7C5ADA2B7498B000E2A468 /* Common in Frameworks */ = {isa = PBXBuildFile; productRef = 2B7C5AD92B7498B000E2A468 /* Common */; };
 		2B7C5ADD2B749B1500E2A468 /* DataLayer in Resources */ = {isa = PBXBuildFile; fileRef = 2B7C5ADC2B749B1500E2A468 /* DataLayer */; };
 		2B7C5ADF2B749B2C00E2A468 /* DataLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 2B7C5ADE2B749B2C00E2A468 /* DataLayer */; };
+		2B7C5AE22B74A07100E2A468 /* ServiceLayer in Resources */ = {isa = PBXBuildFile; fileRef = 2B7C5AE12B74A07100E2A468 /* ServiceLayer */; };
+		2B7C5AE42B74A1BC00E2A468 /* ServiceLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 2B7C5AE32B74A1BC00E2A468 /* ServiceLayer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,7 @@
 		2B7C5ABD2B747FB100E2A468 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2B7C5AD12B7486C500E2A468 /* Common */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Common; sourceTree = "<group>"; };
 		2B7C5ADC2B749B1500E2A468 /* DataLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DataLayer; sourceTree = "<group>"; };
+		2B7C5AE12B74A07100E2A468 /* ServiceLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ServiceLayer; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +41,7 @@
 			files = (
 				2B7C5ACC2B74836100E2A468 /* DITranquillity in Frameworks */,
 				2B7C5AC92B74831000E2A468 /* Kingfisher in Frameworks */,
+				2B7C5AE42B74A1BC00E2A468 /* ServiceLayer in Frameworks */,
 				2B7C5AC62B7482AB00E2A468 /* Lottie in Frameworks */,
 				2B7C5ADF2B749B2C00E2A468 /* DataLayer in Frameworks */,
 				2B7C5ADA2B7498B000E2A468 /* Common in Frameworks */,
@@ -54,6 +58,7 @@
 				2B7C5AD82B7498B000E2A468 /* Frameworks */,
 				2B7C5AD32B7486E400E2A468 /* L0 */,
 				2B7C5ADB2B749B1500E2A468 /* L1 */,
+				2B7C5AE02B74A07100E2A468 /* L2 */,
 				2B7C5AB22B747FB000E2A468 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -109,6 +114,14 @@
 			path = L1;
 			sourceTree = SOURCE_ROOT;
 		};
+		2B7C5AE02B74A07100E2A468 /* L2 */ = {
+			isa = PBXGroup;
+			children = (
+				2B7C5AE12B74A07100E2A468 /* ServiceLayer */,
+			);
+			path = L2;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -131,6 +144,7 @@
 				2B7C5ACB2B74836100E2A468 /* DITranquillity */,
 				2B7C5AD92B7498B000E2A468 /* Common */,
 				2B7C5ADE2B749B2C00E2A468 /* DataLayer */,
+				2B7C5AE32B74A1BC00E2A468 /* ServiceLayer */,
 			);
 			productName = AniTV;
 			productReference = 2B7C5AB12B747FB000E2A468 /* AniTV.app */;
@@ -181,6 +195,7 @@
 			files = (
 				2B7C5ABE2B747FB100E2A468 /* Preview Assets.xcassets in Resources */,
 				2B7C5ABB2B747FB100E2A468 /* Assets.xcassets in Resources */,
+				2B7C5AE22B74A07100E2A468 /* ServiceLayer in Resources */,
 				2B7C5ADD2B749B1500E2A468 /* DataLayer in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -445,6 +460,10 @@
 		2B7C5ADE2B749B2C00E2A468 /* DataLayer */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DataLayer;
+		};
+		2B7C5AE32B74A1BC00E2A468 /* ServiceLayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ServiceLayer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

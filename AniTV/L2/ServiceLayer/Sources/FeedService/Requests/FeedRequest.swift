@@ -1,4 +1,4 @@
-public struct FeedRequest: BackendAPIRequest {
+struct FeedRequest: BackendAPIRequest {
     typealias ResponseObject = [Feed]
 
     private(set) var endpoint: String = "/public/api/index.php"

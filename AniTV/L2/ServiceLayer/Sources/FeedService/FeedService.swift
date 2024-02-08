@@ -2,15 +2,15 @@ import DITranquillity
 import Foundation
 import Combine
 
-final class FeedServicePart: DIPart {
-    static func load(container: DIContainer) {
+public final class FeedServicePart: DIPart {
+    public static func load(container: DIContainer) {
         container.register(FeedServiceImp.init)
             .as(FeedService.self)
             .lifetime(.perRun(.weak))
     }
 }
 
-protocol FeedService {
+public protocol FeedService {
     func fetchRandom() -> AnyPublisher<Series, Error>
     func fetchFiltedData() -> AnyPublisher<FilterData, Error>
     func fetchSchedule() -> AnyPublisher<[Schedule], Error>

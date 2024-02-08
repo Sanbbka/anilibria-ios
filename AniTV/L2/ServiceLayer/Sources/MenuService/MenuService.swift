@@ -2,15 +2,15 @@ import DITranquillity
 import Foundation
 import Combine
 
-final class MenuServicePart: DIPart {
-    static func load(container: DIContainer) {
+public final class MenuServicePart: DIPart {
+    public static func load(container: DIContainer) {
         container.register(MenuServiceImp.init)
             .as(MenuService.self)
             .lifetime(.perRun(.weak))
     }
 }
 
-protocol MenuService {
+public protocol MenuService {
     func fetchCurrentItem() -> AnyPublisher<MenuItemType, Never>
     func getSelected() -> MenuItemType?
     func setMenuItem(type: MenuItemType)

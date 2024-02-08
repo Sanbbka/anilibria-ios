@@ -2,15 +2,15 @@ import DITranquillity
 import Foundation
 import Combine
 
-final class DownloadServicePart: DIPart {
-    static func load(container: DIContainer) {
+public final class DownloadServicePart: DIPart {
+    public static func load(container: DIContainer) {
         container.register(DownloadServiceImp.init)
             .as(DownloadService.self)
             .lifetime(.perRun(.weak))
     }
 }
 
-protocol DownloadService {
+public protocol DownloadService {
     func download(torrent: Torrent, fileName: String) -> AnyPublisher<Void, Error>
 }
 
@@ -24,7 +24,7 @@ final class DownloadServiceImp: DownloadService {
     func download(torrent: Torrent, fileName: String) -> AnyPublisher<Void, Error> {
         return Deferred {
             guard let url = torrent.url, let data = try? Data(contentsOf: url) else {
-                return AnyPublisher<Data, Error>.fail(AppError.server(message: L10n.Error.authorizationFailed))
+                return AnyPublisher<Data, Error>.fail(AppError.server(message: "L10n.Error.authorizationFailed"))
             }
 
             return AnyPublisher<Data, Error>.just(data)
@@ -79,4 +79,8 @@ final class DownloadServiceImp: DownloadService {
         try data.write(to: fileURL, options: .withoutOverwriting)
     }
 
+}
+
+struct Constants {
+    static let downloadFolder: String = "Anilibria Files"
 }

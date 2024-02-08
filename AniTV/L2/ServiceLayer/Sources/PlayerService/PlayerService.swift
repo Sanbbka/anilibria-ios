@@ -2,15 +2,15 @@ import DITranquillity
 import Combine
 import Foundation
 
-final class PlayerServicePart: DIPart {
-    static func load(container: DIContainer) {
+public final class PlayerServicePart: DIPart {
+    public static func load(container: DIContainer) {
         container.register(PlayerServiceImp.init)
             .as(PlayerService.self)
             .lifetime(.single)
     }
 }
 
-protocol PlayerService: AnyObject {
+public protocol PlayerService: AnyObject {
     func fetchSettings() -> PlayerSettings
     func update(settings: PlayerSettings)
 

@@ -62,6 +62,8 @@ public class FullDataResponseConverter: BackendResponseConverter, Loggable {
     public var defaultLoggingTag: LogTag {
         return .unnamed
     }
+    
+    public init() {}
 
     public func convert<T: BackendAPIRequest>(_ type: T.Type,
                                        response data: NetworkResponse) -> (T.ResponseObject?, Error?) {

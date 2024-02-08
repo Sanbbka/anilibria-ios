@@ -1,4 +1,4 @@
-public struct FavoriteListRequest: BackendAPIRequest {
+struct FavoriteListRequest: BackendAPIRequest {
     typealias ResponseObject = PageData<Series>
 
     private(set) var endpoint: String = "/public/api/index.php"

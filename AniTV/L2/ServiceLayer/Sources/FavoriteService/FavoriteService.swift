@@ -2,17 +2,17 @@ import DITranquillity
 import Combine
 import Foundation
 
-final class FavoriteServicePart: DIPart {
-    static func load(container: DIContainer) {
+public final class FavoriteServicePart: DIPart {
+    public static func load(container: DIContainer) {
         container.register(FavoriteServiceImp.init)
             .as(FavoriteService.self)
             .lifetime(.single)
     }
 }
 
-protocol FavoriteService: AnyObject {
+public protocol FavoriteService: AnyObject {
     func fetchSeries() -> AnyPublisher<[Series], Error>
-    func favorite(add: Bool, series: Series) -> AnyPublisher<Unit, Error>
+    func favorite(add: Bool, series: Series) -> AnyPublisher<DataLayer.Unit, Error>
 }
 
 final class FavoriteServiceImp: FavoriteService {
@@ -36,14 +36,14 @@ final class FavoriteServiceImp: FavoriteService {
         .eraseToAnyPublisher()
     }
 
-    func favorite(add: Bool, series: Series) -> AnyPublisher<Unit, Error> {
+    func favorite(add: Bool, series: Series) -> AnyPublisher<DataLayer.Unit, Error> {
         if add {
             return self.add(series: series)
         }
         return self.remove(series: series)
     }
 
-    func add(series: Series) -> AnyPublisher<Unit, Error> {
+    func add(series: Series) -> AnyPublisher<DataLayer.Unit, Error> {
         return Deferred { [unowned self] in
             let request = AddFavoriteRequest(id: series.id)
             return self.backendRepository
@@ -54,7 +54,7 @@ final class FavoriteServiceImp: FavoriteService {
         .eraseToAnyPublisher()
     }
 
-    func remove(series: Series) -> AnyPublisher<Unit, Error> {
+    func remove(series: Series) -> AnyPublisher<DataLayer.Unit, Error> {
         return Deferred { [unowned self] in
             let request = RemoveFavoriteRequest(id: series.id)
             return self.backendRepository

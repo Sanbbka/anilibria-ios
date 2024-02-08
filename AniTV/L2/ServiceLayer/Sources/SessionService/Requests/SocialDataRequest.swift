@@ -1,4 +1,4 @@
-public struct SocialDataRequest: BackendAPIRequest {
+struct SocialDataRequest: BackendAPIRequest {
     typealias ResponseObject = [SocialOAuthData]
 
     private(set) var endpoint: String = "/public/api/index.php"

@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 import Common
 import DataLayer
+import ServiceLayer
 
 @main
 struct AniTVApp: App {
@@ -17,7 +18,8 @@ struct AniTVApp: App {
             Item.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-
+        
+        SimpleLogger().log(.debug, tag: .model, className: "\(PlayerServicePart.self)", "hello")
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {

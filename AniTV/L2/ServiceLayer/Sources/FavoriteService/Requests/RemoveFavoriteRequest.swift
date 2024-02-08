@@ -1,4 +1,4 @@
-public struct RemoveFavoriteRequest: BackendAPIRequest {
+struct RemoveFavoriteRequest: BackendAPIRequest {
     typealias ResponseObject = Unit
 
     private(set) var endpoint: String = "/public/api/index.php"

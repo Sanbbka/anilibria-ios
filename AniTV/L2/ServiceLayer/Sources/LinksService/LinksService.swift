@@ -2,15 +2,15 @@ import DITranquillity
 import Combine
 import Foundation
 
-final class LinksServicePart: DIPart {
-    static func load(container: DIContainer) {
+public final class LinksServicePart: DIPart {
+    public static func load(container: DIContainer) {
         container.register(LinksServiceImp.init)
             .as(LinksService.self)
             .lifetime(.single)
     }
 }
 
-protocol LinksService: AnyObject {
+public protocol LinksService: AnyObject {
     func fetchLinks() -> AnyPublisher<[LinkData], Error>
 }
 

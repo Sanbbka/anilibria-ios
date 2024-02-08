@@ -3,21 +3,21 @@ import Kingfisher
 import Combine
 import Foundation
 
-final class AppConfigurationServicePart: DIPart {
-    static func load(container: DIContainer) {
+public final class AppConfigurationServicePart: DIPart {
+    public static func load(container: DIContainer) {
         container.register(AppConfigurationServiceImp.init)
             .as(AppConfigurationService.self)
             .lifetime(.single)
     }
 }
 
-protocol AppConfigurationService: AnyObject {
+public protocol AppConfigurationService: AnyObject {
     func fetchState() -> AnyPublisher<ConfigurationState, Never>
     func startConfiguration() -> AnyPublisher<ConfigurationState, Error>
     func manualComplete()
 }
 
-enum ConfigurationState {
+public enum ConfigurationState {
     case started
     case completed
 }

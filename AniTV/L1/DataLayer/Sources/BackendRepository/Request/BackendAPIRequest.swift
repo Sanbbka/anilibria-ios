@@ -38,7 +38,7 @@ public protocol BackendAPIRequest {
     var customResponseConverter: BackendResponseConverter? { get }
 }
 
-extension BackendAPIRequest {
+public extension BackendAPIRequest {
     var baseUrl: String {
         return Configuration.server
     }

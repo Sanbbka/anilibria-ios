@@ -2,15 +2,15 @@ import DITranquillity
 import Combine
 import Foundation
 
-final class SessionServicePart: DIPart {
-    static func load(container: DIContainer) {
+public final class SessionServicePart: DIPart {
+    public static func load(container: DIContainer) {
         container.register(SessionServiceImp.init)
             .as(SessionService.self)
             .lifetime(.single)
     }
 }
 
-protocol SessionService: AnyObject {
+public protocol SessionService: AnyObject {
     func fetchState() -> AnyPublisher<SessionState, Never>
 
     func signIn(login: String, password: String, code: String) -> AnyPublisher<User, Error>
@@ -69,7 +69,7 @@ final class SessionServiceImp: SessionService, Loggable {
                         return self.backendRepository
                             .request(request)
                     }
-                    return AnyPublisher<User, Error>.fail(AppError.server(message: L10n.Error.authorizationFailed))
+                    return AnyPublisher<User, Error>.fail(AppError.server(message: "L10n.Error.authorizationFailed"))
                 }
                 .do(onNext: { [unowned self] user in
                     self.userRepository.set(user: user)
@@ -83,7 +83,7 @@ final class SessionServiceImp: SessionService, Loggable {
 
     func signInSocial(url: URL) -> AnyPublisher<User, Error> {
         return Deferred<AnyPublisher<User, Error>> { [unowned self] in
-            let request = JustURLRequest<Unit>(url: url)
+            let request = JustURLRequest<DataLayer.Unit>(url: url)
             return self.backendRepository
                 .request(request)
                 .flatMap { [unowned self] _ in
@@ -97,7 +97,7 @@ final class SessionServiceImp: SessionService, Loggable {
                 })
                 .mapError { [weak self] in
                     self?.log(.error, $0.localizedDescription)
-                    return AppError.server(message: L10n.Error.socialAuthorizationFailed)
+                    return AppError.server(message: "L10n.Error.socialAuthorizationFailed")
                 }
                 .eraseToAnyPublisher()
         }
