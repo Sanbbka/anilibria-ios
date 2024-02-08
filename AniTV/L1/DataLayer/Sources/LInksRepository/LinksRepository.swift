@@ -1,15 +1,15 @@
 import DITranquillity
 import Foundation
 
-final class LinksRepositoryPart: DIPart {
-    static func load(container: DIContainer) {
+public final class LinksRepositoryPart: DIPart {
+    public static func load(container: DIContainer) {
         container.register(LinksRepositoryImp.init)
             .as(LinksRepository.self)
             .lifetime(.single)
     }
 }
 
-protocol LinksRepository {
+public protocol LinksRepository {
     func set(items: [LinkData])
     func getItems() -> [LinkData]
 }

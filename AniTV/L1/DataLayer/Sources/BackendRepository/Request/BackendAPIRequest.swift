@@ -1,7 +1,7 @@
 import Foundation
 
 /// Request configuration protocol
-protocol BackendAPIRequest {
+public protocol BackendAPIRequest {
     associatedtype ResponseObject: Decodable
     /// Server url
     ///

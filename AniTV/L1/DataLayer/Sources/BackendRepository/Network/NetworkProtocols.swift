@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol LoadRetrier {
+public protocol LoadRetrier {
     typealias RetryCompletion = (Bool) -> Void
     func need(retry request: URLRequest,
               error: Error,
@@ -16,6 +16,6 @@ protocol LoadRetrier {
               completion: @escaping RetryCompletion)
 }
 
-protocol RequestModifier {
+public protocol RequestModifier {
     func modify(_ urlRequest: URLRequest) -> URLRequest
 }

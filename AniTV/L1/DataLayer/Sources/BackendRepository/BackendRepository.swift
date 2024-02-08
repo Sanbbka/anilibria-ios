@@ -2,15 +2,15 @@ import DITranquillity
 import Foundation
 import Combine
 
-class BackendRepositoryPart: DIPart {
-    static func load(container: DIContainer) {
+public class BackendRepositoryPart: DIPart {
+    public static func load(container: DIContainer) {
         container.register(BackendRepositoryImp.init)
             .as(BackendRepository.self)
             .lifetime(.single)
     }
 }
 
-protocol BackendRepository {
+public protocol BackendRepository {
     func request<T: BackendAPIRequest>(_ request: T) -> AnyPublisher<T.ResponseObject, Error>
     func apply(_ settings: AniSettings)
 }

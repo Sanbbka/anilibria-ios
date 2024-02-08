@@ -17,8 +17,10 @@ open class NetworkManager: Loggable {
         case OPTIONS, GET, HEAD, POST, PUT, PATCH, DELETE, TRACE, CONNECT
     }
 
-    init(adapter: RequestModifier?,
-         retrier: LoadRetrier?) {
+    public init(
+        adapter: RequestModifier?,
+        retrier: LoadRetrier?
+    ) {
         self.adapter = adapter
         self.retrier = retrier
         self.session = URLSession(configuration: self.configuration())

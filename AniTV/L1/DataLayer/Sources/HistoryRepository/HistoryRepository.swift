@@ -1,15 +1,15 @@
 import DITranquillity
 import Foundation
 
-final class HistoryRepositoryPart: DIPart {
-    static func load(container: DIContainer) {
+public final class HistoryRepositoryPart: DIPart {
+    public static func load(container: DIContainer) {
         container.register(HistoryRepositoryImp.init)
             .as(HistoryRepository.self)
             .lifetime(.single)
     }
 }
 
-protocol HistoryRepository {
+public protocol HistoryRepository {
     func set(item: HistoryData)
     func remove(data id: Int)
     func set(items: [HistoryData])

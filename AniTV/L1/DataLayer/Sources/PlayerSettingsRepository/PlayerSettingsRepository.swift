@@ -1,15 +1,15 @@
 import DITranquillity
 import Foundation
 
-final class PlayerSettingsRepositoryPart: DIPart {
-    static func load(container: DIContainer) {
+public final class PlayerSettingsRepositoryPart: DIPart {
+    public static func load(container: DIContainer) {
         container.register(PlayerSettingsRepositoryImp.init)
             .as(PlayerSettingsRepository.self)
             .lifetime(.single)
     }
 }
 
-protocol PlayerSettingsRepository {
+public protocol PlayerSettingsRepository {
     func set(settings: PlayerSettings)
     func getSettings() -> PlayerSettings
 }

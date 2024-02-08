@@ -1,8 +1,8 @@
 import DITranquillity
 import Foundation
 
-final class UserRepositoryPart: DIPart {
-    static func load(container: DIContainer) {
+public final class UserRepositoryPart: DIPart {
+    public static func load(container: DIContainer) {
         container.register(UserRepositoryImp.init)
             .as(UserRepository.self)
             .as(Clearable.self)
@@ -10,7 +10,7 @@ final class UserRepositoryPart: DIPart {
     }
 }
 
-protocol UserRepository: Clearable {
+public protocol UserRepository: Clearable {
     func set(user: User)
     func getUser() -> User?
 }

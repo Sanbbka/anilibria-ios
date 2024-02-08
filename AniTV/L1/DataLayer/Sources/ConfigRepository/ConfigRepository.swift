@@ -2,15 +2,15 @@ import DITranquillity
 import Combine
 import Foundation
 
-final class ConfigRepositoryPart: DIPart {
-    static func load(container: DIContainer) {
+public final class ConfigRepositoryPart: DIPart {
+    public static func load(container: DIContainer) {
         container.register(ConfigRepositoryImp.init)
             .as(ConfigRepository.self)
             .lifetime(.single)
     }
 }
 
-protocol ConfigRepository {
+public protocol ConfigRepository {
     func set(config: AniConfig)
     func getConfig() -> AniConfig?
 

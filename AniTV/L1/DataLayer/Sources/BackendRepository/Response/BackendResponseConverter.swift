@@ -6,7 +6,7 @@ import Foundation
 /// and response processing
 ///
 /// For example see JsonResponseConverter
-protocol BackendResponseConverter: AnyObject {
+public protocol BackendResponseConverter: AnyObject {
     /// Convert NetworkResponse to pair (ResponseData?, Error?)
     /// - parameter data: Response from NetworkService
     /// - returns: (ResponseData?, Error?)
@@ -19,7 +19,7 @@ public class JsonResponseConverter: BackendResponseConverter, Loggable {
         return .unnamed
     }
 
-    func convert<T: BackendAPIRequest>(_ type: T.Type,
+    public func convert<T: BackendAPIRequest>(_ type: T.Type,
                                        response data: NetworkResponse) -> (T.ResponseObject?, Error?) {
         if (data.0 as NSData).length == 0 {
             return (nil, AppError.responseError(code: MRKitErrorCode.emptyResponse))
@@ -63,7 +63,7 @@ public class FullDataResponseConverter: BackendResponseConverter, Loggable {
         return .unnamed
     }
 
-    func convert<T: BackendAPIRequest>(_ type: T.Type,
+    public func convert<T: BackendAPIRequest>(_ type: T.Type,
                                        response data: NetworkResponse) -> (T.ResponseObject?, Error?) {
         if (data.0 as NSData).length == 0 {
             return (nil, AppError.responseError(code: MRKitErrorCode.emptyResponse))

@@ -1,16 +1,16 @@
 import Foundation
 
 /// Configuration of BackendService
-final class BackendConfiguration {
+public final class BackendConfiguration {
     /// Default server response converter
-    var converter: BackendResponseConverter
+    public var converter: BackendResponseConverter
 
     /// It intercept all requests before execute
     /// Example, you can pass token here
-    var interceptor: RequestModifier?
+    public var interceptor: RequestModifier?
 
     /// It intercept error for retry request
-    var retrier: LoadRetrier?
+    public var retrier: LoadRetrier?
 
     /// Initialisation of BackendConfiguration
     /// - parameter holder: API Server Url holder

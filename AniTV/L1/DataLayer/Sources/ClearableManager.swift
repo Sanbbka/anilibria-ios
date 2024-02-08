@@ -1,10 +1,10 @@
 import Foundation
 
-protocol Clearable {
+public protocol Clearable {
     func clear()
 }
 
-protocol ClearableManager: Clearable {}
+public protocol ClearableManager: Clearable {}
 
 final class ClearableManagerImp: ClearableManager {
     private let items: [Clearable]
