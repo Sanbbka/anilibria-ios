@@ -2727,7 +2727,7 @@
 				CODE_SIGN_ENTITLEMENTS = Anilibria/Anilibria.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 46;
-				DEVELOPMENT_TEAM = 9P3CNK2626;
+				DEVELOPMENT_TEAM = UBXCC45PP4;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Anilibria/Resources/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Anilibria;
@@ -2738,7 +2738,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.3.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tv.anilibria.anilibria;
+				PRODUCT_BUNDLE_IDENTIFIER = alx.tv.anilibria.anilibria;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
@@ -2755,7 +2755,7 @@
 				CODE_SIGN_ENTITLEMENTS = Anilibria/Anilibria.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 46;
-				DEVELOPMENT_TEAM = 9P3CNK2626;
+				DEVELOPMENT_TEAM = UBXCC45PP4;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				INFOPLIST_FILE = "$(SRCROOT)/Anilibria/Resources/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = Anilibria;
@@ -2767,7 +2767,7 @@
 				);
 				MARKETING_VERSION = 1.3.0;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = tv.anilibria.anilibria;
+				PRODUCT_BUNDLE_IDENTIFIER = alx.tv.anilibria.anilibria;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = YES;
