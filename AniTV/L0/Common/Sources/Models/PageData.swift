@@ -1,8 +1,8 @@
 import Foundation
 
 public final class PageData<T: Decodable>: NSObject, Decodable {
-    var items: [T] = []
-    var pagination: PaginationData?
+    public var items: [T] = []
+    public var pagination: PaginationData?
 
     public init(from decoder: Decoder) throws {
         super.init()
@@ -12,10 +12,10 @@ public final class PageData<T: Decodable>: NSObject, Decodable {
 }
 
 public final class PaginationData: NSObject, Decodable {
-    var page: Int = 0
-    var perPage: Int = 0
-    var allPages: Int = 0
-    var allItems: Int = 0
+    public var page: Int = 0
+    public var perPage: Int = 0
+    public var allPages: Int = 0
+    public var allItems: Int = 0
 
     public init(from decoder: Decoder) throws {
         super.init()

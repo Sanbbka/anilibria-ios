@@ -1,9 +1,9 @@
 import Foundation
 
 public struct User: Codable {
-    private(set) var id: Int = 0
-    private(set) var name: String = ""
-    private(set) var avatar: URL?
+    public private(set) var id: Int = 0
+    public private(set) var name: String = ""
+    public private(set) var avatar: URL?
 
     public init(from decoder: Decoder) throws {
 		self.id <- decoder["id"]

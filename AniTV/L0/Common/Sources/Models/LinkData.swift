@@ -34,12 +34,12 @@ public enum LinkType: String, Codable {
 }
 
 public final class LinkData: NSObject, Codable {
-    var title: String = ""
-    var absoluteLink: URL?
-    var sitePagePath: URL?
-    var linkType: LinkType = .unknown
+    public var title: String = ""
+    public var absoluteLink: URL?
+    public var sitePagePath: URL?
+    public var linkType: LinkType = .unknown
 
-    var url: URL? {
+    public var url: URL? {
         if let value = self.absoluteLink {
             return value
         }

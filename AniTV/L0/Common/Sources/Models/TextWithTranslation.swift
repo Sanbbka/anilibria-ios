@@ -8,15 +8,15 @@
 
 import Foundation
 
-struct TextWithTranslation {
-    let original: String
-    var displayValue: String {
+public struct TextWithTranslation {
+    public let original: String
+    public var displayValue: String {
         translation()
     }
     
     private var translation: () -> String
     
-    init(original: String, translation: @escaping @autoclosure () -> String) {
+    public init(original: String, translation: @escaping @autoclosure () -> String) {
         self.original = original
         self.translation = translation
     }

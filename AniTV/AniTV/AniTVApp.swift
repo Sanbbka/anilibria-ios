@@ -7,6 +7,8 @@
 
 import SwiftUI
 import SwiftData
+import Common
+import DataLayer
 
 @main
 struct AniTVApp: App {
@@ -15,6 +17,7 @@ struct AniTVApp: App {
             Item.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        PlayerSettingsRepositoryImp(0)
 
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])

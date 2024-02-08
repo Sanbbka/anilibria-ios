@@ -1,9 +1,17 @@
 import Foundation
 
+public final class TitleItem: NSObject {
+    public let localizedTitle: () -> String
+
+    public init(_ title: @escaping @autoclosure () -> String) {
+        self.localizedTitle = title
+    }
+}
+
 public final class Schedule: NSObject, Decodable {
-    var day: WeekDay?
-    var items: [Series] = []
-    var title: TitleItem {
+    public var day: WeekDay?
+    public var items: [Series] = []
+    public var title: TitleItem {
         TitleItem({ [weak self] in self?.day?.name ?? "" }())
     }
 

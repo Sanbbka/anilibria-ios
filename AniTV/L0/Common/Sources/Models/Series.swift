@@ -8,32 +8,32 @@ public enum StatusCode: String, Codable {
 }
 
 public final class Series: NSObject, Codable {
-    var id: Int = 0
-    var code: String = ""
-    var names: [String] = []
-    var count: String = ""
-    var poster: URL?
-    var lastRelease: Date?
-    var moon: URL?
-    var announce: String = ""
-    var status: String = ""
-    var statusCode: StatusCode?
-    var type: String = ""
-    var genres: [String] = []
-    var voices: [String] = []
-    var year: String = ""
-    var season: String = ""
-    var day: WeekDay?
-    var desc: NSAttributedString?
-    var playlist: [PlaylistItem] = []
-    var favorite: Favorite?
-    var comments: VKComments?
-    var torrents: [Torrent] = []
+    public var id: Int = 0
+    public var code: String = ""
+    public var names: [String] = []
+    public var count: String = ""
+    public var poster: URL?
+    public var lastRelease: Date?
+    public var moon: URL?
+    public var announce: String = ""
+    public var status: String = ""
+    public var statusCode: StatusCode?
+    public var type: String = ""
+    public var genres: [String] = []
+    public var voices: [String] = []
+    public var year: String = ""
+    public var season: String = ""
+    public var day: WeekDay?
+    public var desc: NSAttributedString?
+    public var playlist: [PlaylistItem] = []
+    public var favorite: Favorite?
+    public var comments: VKComments?
+    public var torrents: [Torrent] = []
 
     private var originalDesc: String = ""
     private var originalDate: String = ""
 
-    func hasUpdates() -> Bool {
+    public func hasUpdates() -> Bool {
         guard let releaseTime = self.lastRelease else {
             return false
         }

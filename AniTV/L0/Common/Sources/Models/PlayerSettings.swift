@@ -1,7 +1,7 @@
 import Foundation
 
 public struct PlayerSettings: Codable {
-    var quality: VideoQuality = .fullHd
+    public var quality: VideoQuality = .fullHd
 
-    init() {}
+    public init() {}
 }

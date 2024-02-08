@@ -109,21 +109,3 @@ public extension KeyedEncodingContainer {
 		set { try? self.encode(newValue, forKey: key) }
 	}
 }
-
-extension String: CodingKey {
-	public var stringValue: String {
-		self
-	}
-
-	public var intValue: Int? {
-		nil
-	}
-
-	public init?(intValue: Int) {
-		nil
-	}
-
-	public init?(stringValue: String) {
-		self = stringValue
-	}
-}

@@ -1,10 +1,10 @@
 import Foundation
 
 public struct HistoryData: Codable {
-    let series: Series
-    let context: PlayerContext?
+    public let series: Series
+    public let context: PlayerContext?
 
-    init(series: Series, context: PlayerContext) {
+    public init(series: Series, context: PlayerContext) {
         self.series = series
         self.context = context
     }

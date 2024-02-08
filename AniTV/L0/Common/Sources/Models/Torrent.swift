@@ -9,16 +9,16 @@
 import Foundation
 
 public final class Torrent: NSObject, Decodable {
-    var id: Int = 0
-    var torrentHash: String = ""
-    var leechers: Int = 0
-    var seeders: Int = 0
-    var completed: Int = 0
-    var quality: String = ""
-    var series: String = ""
-    var size: Double = 0
-    var url: URL?
-    var ctime: Date?
+    public var id: Int = 0
+    public var torrentHash: String = ""
+    public var leechers: Int = 0
+    public var seeders: Int = 0
+    public var completed: Int = 0
+    public var quality: String = ""
+    public var series: String = ""
+    public var size: Double = 0
+    public var url: URL?
+    public var ctime: Date?
 
     public init(from decoder: Decoder) throws {
         super.init()

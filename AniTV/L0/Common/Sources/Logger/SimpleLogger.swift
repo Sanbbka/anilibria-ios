@@ -1,6 +1,6 @@
 import UIKit
 
-final class SimpleLogger: LoggerType {
+public final class SimpleLogger: LoggerType {
     private lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm:ss.SSS"
@@ -11,9 +11,9 @@ final class SimpleLogger: LoggerType {
         return self.dateFormatter.string(from: Date())
     }
 
-    init() {}
+    public init() {}
 
-    func log(_ level: LogLevel, tag: LogTag, className: String, _ message: String) {
+    public func log(_ level: LogLevel, tag: LogTag, className: String, _ message: String) {
         #if DEBUG
             switch level {
             case .debug:

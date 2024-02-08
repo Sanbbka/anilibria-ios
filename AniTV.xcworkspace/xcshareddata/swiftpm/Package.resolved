@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ivlevAstef/DITranquillity",
       "state" : {
-        "revision" : "fda9b88ab2a2360faddae1cebc4e64f2df495ae0",
-        "version" : "4.5.0"
+        "revision" : "2ea85e5c157bdda71fd71dfa295e1a33a0da9ea4",
+        "version" : "4.5.2"
       }
     },
     {

@@ -26,7 +26,7 @@ extension AppError: ErrorDisplayable {
             return "Error: \(code)"
         case let .network(code):
             if code == 401 {
-                return L10n.Error.authorizationInvailid
+                return "L10n.Error.authorizationInvailid"
             }
             return "Network Error: \(code)"
         case let .unexpectedError(message), let .server(message):

@@ -36,11 +36,11 @@ public extension Loggable {
     }
 }
 
-protocol LoggerType {
+public protocol LoggerType {
     func log(_ level: LogLevel, tag: LogTag, className: String, _ message: String)
 }
 
-final class Logger {
+public final class Logger {
     internal var activeLogger: LoggerType?
     internal var disabledSymbols = Set<String>()
     fileprivate(set) static var sharedInstance = Logger()

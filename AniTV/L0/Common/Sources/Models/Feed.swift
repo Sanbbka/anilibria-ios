@@ -1,8 +1,8 @@
 import Foundation
 
 public final class Feed: NSObject, Decodable {
-    var series: Series?
-    var news: News?
+    public var series: Series?
+    public var news: News?
 
     public init(from decoder: Decoder) throws {
         super.init()

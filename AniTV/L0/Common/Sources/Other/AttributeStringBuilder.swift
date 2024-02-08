@@ -80,7 +80,7 @@ public final class AttributeStringBuilder {
     }
 }
 
-extension URL {
+public extension URL {
     var isAttributeLink: Bool {
         return self.scheme == "AttributeBuilder"
     }

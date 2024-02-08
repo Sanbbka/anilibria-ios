@@ -1,27 +1,27 @@
 import Foundation
 
-struct AniConfig: Codable {
-    let addresses: [AniAddress]
+public struct AniConfig: Codable {
+    public let addresses: [AniAddress]
 }
 
-struct AniAddress: Codable {
-    let name: String?
-    let base: String
-    let baseImages: String
-    let widgetsSite: String
-    let proxies: [AniProxy]
+public struct AniAddress: Codable {
+    public let name: String?
+    public let base: String
+    public let baseImages: String
+    public let widgetsSite: String
+    public let proxies: [AniProxy]
 }
 
-struct AniProxy: Codable {
-    let tag: String?
-    let name: String?
-    let desc: String?
-    let ip: String
-    let port: Int
-    let user: String?
-    let password: String?
+public struct AniProxy: Codable {
+    public let tag: String?
+    public let name: String?
+    public let desc: String?
+    public let ip: String
+    public let port: Int
+    public let user: String?
+    public let password: String?
 
-    func config() -> [AnyHashable: Any] {
+    public func config() -> [AnyHashable: Any] {
         var proxyConfiguration = [String: Any]()
         proxyConfiguration.updateValue(1, forKey: "HTTPEnable")
         proxyConfiguration.updateValue(ip, forKey: "HTTPProxy")
@@ -33,21 +33,21 @@ struct AniProxy: Codable {
     }
 }
 
-final class AniSettings: Codable {
-    let server: String
-    let images: String
-    let widget: String
-    let proxy: AniProxy?
-    var next: AniSettings?
+public final class AniSettings: Codable {
+    public let server: String
+    public let images: String
+    public let widget: String
+    public let proxy: AniProxy?
+    public var next: AniSettings?
 
-    init(address: AniAddress, proxy: AniProxy?) {
+    public init(address: AniAddress, proxy: AniProxy?) {
         self.server = address.base
         self.images = address.baseImages
         self.widget = address.widgetsSite
         self.proxy = proxy
     }
 
-    static func create(from config: AniConfig) -> AniSettings? {
+    public static func create(from config: AniConfig) -> AniSettings? {
         var result: AniSettings?
         var current: AniSettings?
         for address in config.addresses {
@@ -78,7 +78,7 @@ final class AniSettings: Codable {
         self.next = nil
     }
 
-    static let `default`: AniSettings = AniSettings(server: "https://www.anilibria.tv",
+    public static let `default`: AniSettings = AniSettings(server: "https://www.anilibria.tv",
                                                     images: "https://www.anilibria.tv",
                                                     widget: "https://www.anilibria.tv")
 }

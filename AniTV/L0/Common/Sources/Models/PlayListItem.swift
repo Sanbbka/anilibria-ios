@@ -5,7 +5,7 @@ public enum VideoQuality: Int, CaseIterable, Codable {
     case hd
     case sd
 
-    func next() -> VideoQuality? {
+    public func next() -> VideoQuality? {
         switch self {
         case .fullHd:
             return .hd
@@ -16,21 +16,21 @@ public enum VideoQuality: Int, CaseIterable, Codable {
         }
     }
 
-    var name: String {
+    public var name: String {
         switch self {
         case .fullHd:
-            return L10n.Common.Quality.fullHd
+            return "L10n.Common.Quality.fullHd"
         case .hd:
-            return L10n.Common.Quality.hd
+            return "L10n.Common.Quality.hd"
         case .sd:
-            return L10n.Common.Quality.sd
+            return "L10n.Common.Quality.sd"
         }
     }
 }
 
-struct Skips: Decodable {
-    let opening: Range<Int>?
-    let ending: Range<Int>?
+public struct Skips: Decodable {
+    public let opening: Range<Int>?
+    public let ending: Range<Int>?
     
     public init(from decoder: Decoder) throws {
         let rangeConverter = RangeConverter()
@@ -40,10 +40,10 @@ struct Skips: Decodable {
 }
 
 public final class PlaylistItem: NSObject, Decodable {
-    var id: Int = 0
-    var title: String = ""
-    var video: [VideoQuality: URL] = [:]
-    var skips: Skips?
+    public var id: Int = 0
+    public var title: String = ""
+    public var video: [VideoQuality: URL] = [:]
+    public var skips: Skips?
 
     public func supportedQualities() -> [VideoQuality] {
         return self.video.keys.sorted(by: { $0.rawValue < $1.rawValue })
@@ -70,7 +70,7 @@ public final class PlaylistItem: NSObject, Decodable {
     }
 }
 
-extension Skips {
+public extension Skips {
     func canSkip(time: Int, length: Int) -> Bool {
         [opening, ending]
             .compactMap { $0 }

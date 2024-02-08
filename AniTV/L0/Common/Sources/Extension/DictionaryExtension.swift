@@ -1,13 +1,13 @@
 import Foundation
 
-extension String {
+public extension String {
     func stringByAddingPercentEncodingForURLQueryValue() -> String? {
         let allowedCharacters = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._~")
         return self.addingPercentEncoding(withAllowedCharacters: allowedCharacters)
     }
 }
 
-extension Dictionary where Key == String, Value == Any {
+public extension Dictionary where Key == String, Value == Any {
     func stringFromHttpParameters() -> String {
         let parameterArray = self.compactMap { (key, value) -> String? in
             let percentEscapedKey = key.stringByAddingPercentEncodingForURLQueryValue()!

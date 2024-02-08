@@ -5,11 +5,11 @@ public enum OAuthSocial: String, Decodable {
 }
 
 public struct SocialOAuthData: Decodable {
-    private(set) var key: OAuthSocial?
-    private(set) var title: String = ""
-    private(set) var socialUrl: URL?
-    private(set) var resultPattern: String = ""
-    private(set) var errorUrlPattern: String = ""
+    public private(set) var key: OAuthSocial?
+    public private(set) var title: String = ""
+    public private(set) var socialUrl: URL?
+    public private(set) var resultPattern: String = ""
+    public private(set) var errorUrlPattern: String = ""
 
     public init(from decoder: Decoder) throws {
 		self.key <- decoder["key"]
