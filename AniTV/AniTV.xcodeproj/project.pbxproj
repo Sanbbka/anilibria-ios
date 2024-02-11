@@ -20,6 +20,9 @@
 		2B7C5ADF2B749B2C00E2A468 /* DataLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 2B7C5ADE2B749B2C00E2A468 /* DataLayer */; };
 		2B7C5AE22B74A07100E2A468 /* ServiceLayer in Resources */ = {isa = PBXBuildFile; fileRef = 2B7C5AE12B74A07100E2A468 /* ServiceLayer */; };
 		2B7C5AE42B74A1BC00E2A468 /* ServiceLayer in Frameworks */ = {isa = PBXBuildFile; productRef = 2B7C5AE32B74A1BC00E2A468 /* ServiceLayer */; };
+		2B7C5AEA2B756AF500E2A468 /* Screens in Resources */ = {isa = PBXBuildFile; fileRef = 2B7C5AE92B756AF500E2A468 /* Screens */; };
+		2BD716652B7595530029CF44 /* App in Frameworks */ = {isa = PBXBuildFile; productRef = 2BD716642B7595530029CF44 /* App */; };
+		2BD716672B77CD660029CF44 /* AppDependencies in Frameworks */ = {isa = PBXBuildFile; productRef = 2BD716662B77CD660029CF44 /* AppDependencies */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +35,8 @@
 		2B7C5AD12B7486C500E2A468 /* Common */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Common; sourceTree = "<group>"; };
 		2B7C5ADC2B749B1500E2A468 /* DataLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = DataLayer; sourceTree = "<group>"; };
 		2B7C5AE12B74A07100E2A468 /* ServiceLayer */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = ServiceLayer; sourceTree = "<group>"; };
+		2B7C5AE52B75627800E2A468 /* Components */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Components; sourceTree = "<group>"; };
+		2B7C5AE92B756AF500E2A468 /* Screens */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Screens; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,9 +47,11 @@
 				2B7C5ACC2B74836100E2A468 /* DITranquillity in Frameworks */,
 				2B7C5AC92B74831000E2A468 /* Kingfisher in Frameworks */,
 				2B7C5AE42B74A1BC00E2A468 /* ServiceLayer in Frameworks */,
+				2BD716652B7595530029CF44 /* App in Frameworks */,
 				2B7C5AC62B7482AB00E2A468 /* Lottie in Frameworks */,
 				2B7C5ADF2B749B2C00E2A468 /* DataLayer in Frameworks */,
 				2B7C5ADA2B7498B000E2A468 /* Common in Frameworks */,
+				2BD716672B77CD660029CF44 /* AppDependencies in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +66,7 @@
 				2B7C5AD32B7486E400E2A468 /* L0 */,
 				2B7C5ADB2B749B1500E2A468 /* L1 */,
 				2B7C5AE02B74A07100E2A468 /* L2 */,
+				2B7C5AE82B756AF500E2A468 /* L3 */,
 				2B7C5AB22B747FB000E2A468 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -94,6 +102,7 @@
 		2B7C5AD32B7486E400E2A468 /* L0 */ = {
 			isa = PBXGroup;
 			children = (
+				2B7C5AE52B75627800E2A468 /* Components */,
 				2B7C5AD12B7486C500E2A468 /* Common */,
 			);
 			path = L0;
@@ -122,6 +131,14 @@
 			path = L2;
 			sourceTree = "<group>";
 		};
+		2B7C5AE82B756AF500E2A468 /* L3 */ = {
+			isa = PBXGroup;
+			children = (
+				2B7C5AE92B756AF500E2A468 /* Screens */,
+			);
+			path = L3;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -145,6 +162,8 @@
 				2B7C5AD92B7498B000E2A468 /* Common */,
 				2B7C5ADE2B749B2C00E2A468 /* DataLayer */,
 				2B7C5AE32B74A1BC00E2A468 /* ServiceLayer */,
+				2BD716642B7595530029CF44 /* App */,
+				2BD716662B77CD660029CF44 /* AppDependencies */,
 			);
 			productName = AniTV;
 			productReference = 2B7C5AB12B747FB000E2A468 /* AniTV.app */;
@@ -197,6 +216,7 @@
 				2B7C5ABB2B747FB100E2A468 /* Assets.xcassets in Resources */,
 				2B7C5AE22B74A07100E2A468 /* ServiceLayer in Resources */,
 				2B7C5ADD2B749B1500E2A468 /* DataLayer in Resources */,
+				2B7C5AEA2B756AF500E2A468 /* Screens in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +484,14 @@
 		2B7C5AE32B74A1BC00E2A468 /* ServiceLayer */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ServiceLayer;
+		};
+		2BD716642B7595530029CF44 /* App */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = App;
+		};
+		2BD716662B77CD660029CF44 /* AppDependencies */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AppDependencies;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

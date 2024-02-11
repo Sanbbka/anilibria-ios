@@ -43,14 +43,14 @@ public protocol LoggerType {
 public final class Logger {
     internal var activeLogger: LoggerType?
     internal var disabledSymbols = Set<String>()
-    fileprivate(set) static var sharedInstance = Logger()
+    public fileprivate(set) static var sharedInstance = Logger()
 
     /// Overrides shared instance, useful for testing
-    static func setSharedInstance(_ logger: Logger) {
+    public static func setSharedInstance(_ logger: Logger) {
         self.sharedInstance = logger
     }
 
-    func setupLogger(_ logger: LoggerType) {
+    public func setupLogger(_ logger: LoggerType) {
         assert(self.activeLogger == nil, "Changing logger is disallowed to maintain consistency")
         self.activeLogger = logger
     }

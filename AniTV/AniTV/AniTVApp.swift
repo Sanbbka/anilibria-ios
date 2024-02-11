@@ -10,6 +10,7 @@ import SwiftData
 import Common
 import DataLayer
 import ServiceLayer
+import DITranquillity
 
 @main
 struct AniTVApp: App {
@@ -19,12 +20,12 @@ struct AniTVApp: App {
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
         
-        SimpleLogger().log(.debug, tag: .model, className: "\(PlayerServicePart.self)", "hello")
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }
+        DISetting.Log.level = .verbose
     }()
 
     var body: some Scene {

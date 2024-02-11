@@ -6,14 +6,14 @@ public protocol Clearable {
 
 public protocol ClearableManager: Clearable {}
 
-final class ClearableManagerImp: ClearableManager {
+public final class ClearableManagerImp: ClearableManager {
     private let items: [Clearable]
 
-    init(items: [Clearable]) {
+    public init(items: [Clearable]) {
         self.items = items
     }
 
-    func clear() {
+    public func clear() {
         self.items.forEach { $0.clear() }
     }
 }

@@ -64,7 +64,7 @@ final class AppConfigurationServiceImp: AppConfigurationService {
             .eraseToAnyPublisher()
     }
 
-    func manualComplete() {
+    public func manualComplete() {
         self.backendRepository.apply(.default)
         self.currentProxy = nil
         self.statusRelay.send(.completed)
