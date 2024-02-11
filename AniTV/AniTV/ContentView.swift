@@ -10,22 +10,29 @@ import SwiftData
 import ComposableArchitecture
 import App
 import AppDependencies
+import DITranquillity
 
-var dependencyConfiguration: DependenciesConfigurationBase = {
+var dependencyConfigurationContainer: DIContainer  = {
     let config = DependenciesConfigurationBase()
     config.setup()
     
-    return config
+    return config.configuredContainer()
 }()
 
 struct ContentView: View {
     let store = Store(
         initialState: AniTVReducer.State()) {
-            AniTVReducer(container: dependencyConfiguration.configuredContainer())._printChanges()
+            AniTVReducer(
+                container:dependencyConfigurationContainer
+            )
+            ._printChanges()
         }
     
     var body: some View {
-        AniTVView(store: store)
+        AniTVView(
+            store: store,
+            container: dependencyConfigurationContainer
+        )
     }
 }
 

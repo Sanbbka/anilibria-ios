@@ -26,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2B2446192B78E158008395C6 /* CoreAudioTypes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioTypes.framework; path = System/Library/Frameworks/CoreAudioTypes.framework; sourceTree = SDKROOT; };
 		2B7C5AB12B747FB000E2A468 /* AniTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AniTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B7C5AB42B747FB000E2A468 /* AniTVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AniTVApp.swift; sourceTree = "<group>"; };
 		2B7C5AB62B747FB000E2A468 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,6 +112,7 @@
 		2B7C5AD82B7498B000E2A468 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2B2446192B78E158008395C6 /* CoreAudioTypes.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

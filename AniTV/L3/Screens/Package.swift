@@ -23,12 +23,16 @@ let package = Package(
             name: "AppDependencies",
             targets: ["AppDependencies"]
         ),
+        .library(
+            name: "MainScreen",
+            targets: ["MainScreen"]
+        ),
     ],
     dependencies: [
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture", .upToNextMajor(from: .init(1, 7, 3))),
         .package(path: "../L2/ServiceLayer"),
         .package(url: "https://github.com/ivlevAstef/DITranquillity.git", .upToNextMajor(from: "4.5.0")),
-        
+        .package(url: "https://github.com/onevcat/Kingfisher.git", .upToNextMajor(from: "7.0.0"))
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -46,7 +50,8 @@ let package = Package(
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
                 "Configurations",
                 "AppDependencies",
-                "DITranquillity"
+                "DITranquillity",
+                "MainScreen"
             ]
         ),
         .target(
@@ -54,6 +59,16 @@ let package = Package(
             dependencies: [
                 "ServiceLayer"
             ]
-        )
+        ),
+        .target(
+            name: "MainScreen",
+            dependencies: [
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+                "AppDependencies",
+                "DITranquillity",
+                "ServiceLayer",
+                "Kingfisher"
+            ]
+        ),
     ]
 )

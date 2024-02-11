@@ -3,6 +3,7 @@ import ComposableArchitecture
 import ServiceLayer
 import DITranquillity
 import Combine
+import MainScreen
 
 private var bag = Set<AnyCancellable>()
 
@@ -13,13 +14,15 @@ public struct AniTVReducer: Reducer {
         public var configurationLoading = false
         public var configurationLoaded = false
         
+        public var startStateSection: SectionTVReducer.State? = SectionTVReducer.State()
+        
         public init(configurationLoaded: Bool = false) {
             self.configurationLoaded = configurationLoaded
         }
     }
     public enum Action {
         case startLoad
-        case configDidLoad
+        case configDidLoad(SectionTVReducer.Action)
         case error
     }
     
@@ -30,8 +33,6 @@ public struct AniTVReducer: Reducer {
     }
     public init(container: DIContainer) {
         self.container = container
-        
-        
     }
     
     public var body: some Reducer<State, Action> {
@@ -54,7 +55,7 @@ public struct AniTVReducer: Reducer {
                                 }).store(in: &bag)
                         }
                         if result == .completed {
-                            await send(.configDidLoad)
+                            await send(.configDidLoad(.start))
                         } else {
                             await send(.error)
                         }
@@ -72,6 +73,8 @@ public struct AniTVReducer: Reducer {
             }
             
             return .none
+        }.ifLet(\.startStateSection, action: \.configDidLoad) {
+            SectionTVReducer(container: container)
         }
     }
 }
