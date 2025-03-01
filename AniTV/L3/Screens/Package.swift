@@ -32,7 +32,8 @@ let package = Package(
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture", .upToNextMajor(from: .init(1, 7, 3))),
         .package(path: "../L2/ServiceLayer"),
         .package(url: "https://github.com/ivlevAstef/DITranquillity.git", .upToNextMajor(from: "4.5.0")),
-        .package(url: "https://github.com/onevcat/Kingfisher.git", .upToNextMajor(from: "7.0.0"))
+        .package(url: "https://github.com/onevcat/Kingfisher.git", .upToNextMajor(from: "7.0.0")),
+        .package(path: "../L0/Components")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -67,7 +68,8 @@ let package = Package(
                 "AppDependencies",
                 "DITranquillity",
                 "ServiceLayer",
-                "Kingfisher"
+                "Kingfisher",
+                "Components"
             ]
         ),
     ]

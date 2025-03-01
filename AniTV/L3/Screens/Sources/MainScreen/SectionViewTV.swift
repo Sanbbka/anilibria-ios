@@ -11,6 +11,7 @@ import ComposableArchitecture
 import DITranquillity
 @preconcurrency import ServiceLayer
 import Combine
+import Components
 
 @Reducer
 public struct SectionTVReducer {
@@ -23,6 +24,7 @@ public struct SectionTVReducer {
         
         var nextPage = 0
         var series = [Series]()
+        var loading = false
     }
 
     public enum Action: Sendable {
@@ -36,8 +38,8 @@ public struct SectionTVReducer {
             switch action {
                 
             case .start:
-                print("st")
                 let nextPage = state.nextPage
+                state.loading = true
                 return .run { send in
                     var bag = Set<AnyCancellable>()
                     do {
@@ -62,9 +64,9 @@ public struct SectionTVReducer {
                 }
                 
             case .loaded(let series):
-                state.series = series
+                state.series += series
                 state.nextPage += 1
-                print("ed")
+                state.loading = false
             
             case .error:
                 print("err")
@@ -88,15 +90,17 @@ public struct SectionViewTV: View {
     
     public let store: StoreOf<SectionTVReducer>
     
+    var rows: [PosterModel] {
+        store.series.compactMap { PosterModel(id: $0.id, title: $0.names.first ?? "", description: $0.desc?.string ?? "", posterUrl: $0.poster) }
+    }
+    
     public var body: some View {
-        Text("Feed \(store.series.count)").background(Color.red)
-        ScrollView (.horizontal, showsIndicators: false) {
-            HStack {
-                ForEach(0..<store.series.count, id: \.self) { index in
-                    let ser = store.series[index]
-                    PosterView(poster: .init(title: ser.names.first ?? "name", posterUrl: ser.poster))
-                }
-            }.padding(40)
+        if !rows.isEmpty {
+            PosterSection(isLoading: store.loading, rows: rows) { model in
+                print(model)
+            } loadMore: {
+                store.send(.start)
+            }
         }
     }
 }

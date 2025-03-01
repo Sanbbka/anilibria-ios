@@ -12,7 +12,7 @@ import App
 import AppDependencies
 import DITranquillity
 
-var dependencyConfigurationContainer: DIContainer  = {
+nonisolated(unsafe) var dependencyConfigurationContainer: DIContainer  = {
     let config = DependenciesConfigurationBase()
     config.setup()
     
@@ -34,9 +34,4 @@ struct ContentView: View {
             container: dependencyConfigurationContainer
         )
     }
-}
-
-#Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }

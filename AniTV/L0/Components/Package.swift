@@ -15,13 +15,19 @@ let package = Package(
             name: "Components",
             targets: ["Components"]),
     ],
+    dependencies: [
+        .package(url: "https://github.com/onevcat/Kingfisher.git", .upToNextMajor(from: "7.0.0")),
+        .package(url: "https://github.com/markiv/SwiftUI-Shimmer.git", .upToNextMajor(from: "1.4.2")),
+    ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "Components"),
-        .testTarget(
-            name: "ComponentsTests",
-            dependencies: ["Components"]),
+            name: "Components",
+            dependencies: [
+                .product(name: "Shimmer", package: "SwiftUI-Shimmer"),
+                "Kingfisher"
+            ]
+        )
     ]
 )

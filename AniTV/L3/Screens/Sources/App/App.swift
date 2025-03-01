@@ -4,6 +4,7 @@ import Configurations
 import ComposableArchitecture
 import MainScreen
 import DITranquillity
+import Components
 
 public struct AniTVView: View {
     let store: StoreOf<AniTVReducer>
@@ -15,14 +16,21 @@ public struct AniTVView: View {
     }
     
     public var body: some View {
-        
-        ConfigurationView().onAppear(perform: {
-            store.send(.startLoad)
-        })
+        if store.configurationLoading {
+            ConfigurationView().onAppear(perform: {
+                store.send(.startLoad)
+            })
+        }
         
         if store.configurationLoaded {
             if let store = store.scope(state: \.startStateSection, action: \.configDidLoad) {
-                SectionViewTV(store: store)
+                HStack {
+                    SectionViewTV(store: store).frame(maxWidth: .infinity)
+                    
+                    Text("Правая сторона")
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                }
             }
         }
     }

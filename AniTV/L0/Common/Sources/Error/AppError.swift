@@ -1,5 +1,4 @@
 import Foundation
-import LocalAuthentication
 
 public protocol ErrorDisplayable {
     var displayMessage: String? { get }

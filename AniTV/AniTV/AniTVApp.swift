@@ -25,12 +25,16 @@ struct AniTVApp: App {
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }
-        DISetting.Log.level = .verbose
     }()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ZStack {
+                Color.appBackground
+                    .ignoresSafeArea()
+                
+                ContentView()
+            }
         }
         .modelContainer(sharedModelContainer)
     }

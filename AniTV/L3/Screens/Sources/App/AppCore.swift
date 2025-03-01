@@ -11,7 +11,7 @@ private var bag = Set<AnyCancellable>()
 public struct AniTVReducer: Reducer {
     @ObservableState
     public struct State {
-        public var configurationLoading = false
+        public var configurationLoading = true
         public var configurationLoaded = false
         
         public var startStateSection: SectionTVReducer.State? = SectionTVReducer.State()
