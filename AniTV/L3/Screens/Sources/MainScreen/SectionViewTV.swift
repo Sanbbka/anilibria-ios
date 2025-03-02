@@ -22,15 +22,18 @@ public struct SectionTVReducer {
             self.series = series
         }
         
-        var nextPage = 0
-        var series = [Series]()
-        var loading = false
+        public var nextPage = 0
+        public var series = [Series]()
+        public var loading = false
+        public var selectedSeries: Series?
     }
 
     public enum Action: Sendable {
         case start
         case loaded([Series]) // поправить сендабл
         case error
+        case select(PosterModel)
+        case selectSeries(Series)
     }
     
     public var body: some Reducer<State, Action> {
@@ -70,6 +73,26 @@ public struct SectionTVReducer {
             
             case .error:
                 print("err")
+            
+            case .select(let poster):
+                guard let series = state.series.first(where: { $0.id == poster.id }) else {
+                    return .none
+                }
+                state.selectedSeries = series
+//                return .run { send in
+//                    var bag = Set<AnyCancellable>()
+//                    let result = try await withCheckedThrowingContinuation { continuation in
+//                        self.feedService.series(with: series.code)
+//                            .sink(onNext: { item in
+//                                continuation.resume(returning: item)
+//                            })
+//                            .store(in: &bag)
+//                    }
+//                    
+//                    await send(.selectSeries(result))
+//                }
+            case .selectSeries(let series):
+                state.selectedSeries = series
             }
             return .none
         }
@@ -97,7 +120,7 @@ public struct SectionViewTV: View {
     public var body: some View {
         if !rows.isEmpty {
             PosterSection(isLoading: store.loading, rows: rows) { model in
-                print(model)
+                store.send(.select(model))
             } loadMore: {
                 store.send(.start)
             }

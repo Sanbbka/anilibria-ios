@@ -27,9 +27,11 @@ public struct AniTVView: View {
                 HStack {
                     SectionViewTV(store: store).frame(maxWidth: .infinity)
                     
-                    Text("Правая сторона")
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
+                    VStack {
+                        if let series = self.store.startStateSection?.selectedSeries {
+                            SeriesPageView(series: series, container: container).id(series.id)
+                        }
+                    }.frame(maxWidth: .infinity)
                 }
             }
         }

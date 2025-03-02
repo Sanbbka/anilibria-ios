@@ -8,7 +8,7 @@
 import SwiftUI
 import Kingfisher
 
-public struct PosterModel: Identifiable {
+public struct PosterModel: Identifiable, Sendable {
     public let id: Int
     public let title: String
     public let description: String
