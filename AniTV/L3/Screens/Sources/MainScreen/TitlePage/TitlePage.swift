@@ -51,6 +51,21 @@ class SeriesPage: Reducer {
     let feedService: FeedService
 }
 
+extension Series {
+    var episodes: [Episode] {
+        playlist.compactMap { Episode(videoURL: $0.video[$0.supportedQualities().first ?? .fullHd], number: $0.title) }
+    }
+    
+    var moreSeasons: [(title: String, url: URL)] {
+        desc?.extractLinks() ?? []
+    }
+    
+    var descriptionTexts: String? {
+        let texts = desc?.string.split(separator: "\n\n") ?? []
+        return texts.first.map(String.init)
+    }
+}
+
 public struct SeriesPageView: View {
     @Namespace var seriesPageView
     
@@ -60,11 +75,15 @@ public struct SeriesPageView: View {
     @FocusState var isFocused
     
     var episodes: [Episode] {
-        store.series.playlist.compactMap { Episode(videoURL: $0.video.first?.value, number: $0.title) }
+        store.series.episodes
     }
     
     var moreSeasons: [(title: String, url: URL)] {
-        store.series.desc?.extractLinks() ?? []
+        store.series.moreSeasons
+    }
+    
+    var descriptionTexts: String? {
+        store.series.descriptionTexts
     }
     
     public init(series: Series, container: DIContainer) {
@@ -77,70 +96,53 @@ public struct SeriesPageView: View {
     public var body: some View {
         VStack {
             Group {
-                CardSection {
-                    Group {
-                        ForEach(Array(store.series.names.enumerated()), id: \.offset) { index, text in
-                            if index == .zero {
-                                Text(text)
-                                    .font(.headline)
-                                    .multilineTextAlignment(.leading)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                            } else {
-                                Text(text)
-                                    .foregroundColor(.secondary)
-                                    .font(.subheadline)
-                                    .multilineTextAlignment(.leading)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                            }
-                        }
-                    }.focusable()
-                }
                 ScrollView (.vertical, showsIndicators: false) {
-                    EpisodesListView(episodes: episodes)
-                    let texts = store.series.desc?.string.split(separator: "\n\n") ?? []
-                    
-                    if let string = texts.first {
-                        CardSection {
-                            Text(string)
-                                .foregroundColor(.primary)
-                                .font(.caption)
-                                .multilineTextAlignment(.leading)
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                    VStack(spacing: 22) {
+                        Button {} label: {
+                            VStack {
+                                ForEach(Array(store.series.names.enumerated()), id: \.offset) { index, text in
+                                    if index == .zero {
+                                        Text(text)
+                                            .font(.headline)
+                                            .multilineTextAlignment(.leading)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    } else {
+                                        Text(text)
+                                            .foregroundColor(.secondary)
+                                            .font(.subheadline)
+                                            .multilineTextAlignment(.leading)
+                                            .frame(maxWidth: .infinity, alignment: .leading)
+                                    }
+                                }
+                            }.focusable()
                         }
-                    }
-                    if !moreSeasons.isEmpty {
-                        Text("Еще сезоны:")
-                            .font(.headline)
-                            .multilineTextAlignment(.leading)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(22)
-                            .background(Color.primary)
-                            .foregroundColor(.cyan)
-                            .scaleEffect(isFocused ? 1 : 0.98)
-                            .focused($isFocused)
-                            .focusable()
-                        CardSection(focusable: false) {
+                        EpisodesListView(episodes: episodes) { episode in
+                            print("choose: ", episode)
+                        }
+                        if let string = descriptionTexts {
+                            DescLabel(string: string)
+                        }
+                        if !moreSeasons.isEmpty {
                             Text("Еще сезоны:")
                                 .font(.headline)
                                 .multilineTextAlignment(.leading)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             
-                            ForEach(moreSeasons, id: \.title) { season in
-                                Text(season.title)
-                                    .font(.headline)
-                                    .multilineTextAlignment(.leading)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding(22)
-                                    .background(Color.primary)
-                                    .foregroundColor(.cyan)
-                                    .scaleEffect(isFocused ? 1 : 0.98)
-                                    .focused($isFocused)
-                                    .focusable()
+                            VStack(alignment: .leading, spacing: 12) {
+                                ForEach(moreSeasons, id: \.title) { season in
+                                    HStack {
+                                        BaseButton(string: season.title)
+                                        Spacer()
+                                    }
+                                }
                             }
                         }
                     }
                 }.scrollTargetBehavior(.viewAligned)
-            }.padding(22)
+            }
+            .padding(22)
+            .scrollClipDisabled()
+            .scrollTargetLayout()
         }
         .onAppear {
             store.send(.start)
