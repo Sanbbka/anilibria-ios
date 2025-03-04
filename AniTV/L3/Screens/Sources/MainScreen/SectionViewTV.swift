@@ -78,19 +78,10 @@ public struct SectionTVReducer {
                 guard let series = state.series.first(where: { $0.id == poster.id }) else {
                     return .none
                 }
-                state.selectedSeries = series
-//                return .run { send in
-//                    var bag = Set<AnyCancellable>()
-//                    let result = try await withCheckedThrowingContinuation { continuation in
-//                        self.feedService.series(with: series.code)
-//                            .sink(onNext: { item in
-//                                continuation.resume(returning: item)
-//                            })
-//                            .store(in: &bag)
-//                    }
-//                    
-//                    await send(.selectSeries(result))
-//                }
+                return .run { send in
+                    await send(.selectSeries(series))
+                }
+                
             case .selectSeries(let series):
                 state.selectedSeries = series
             }

@@ -31,7 +31,7 @@ struct EpisodesListView: View {
                               focusedScale: focusedScale)
                 }
             }
-            .padding(60)
+            .padding(20)
             .scrollTargetLayout()
         }
         .scrollTargetBehavior(.viewAligned)

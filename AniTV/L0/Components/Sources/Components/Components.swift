@@ -32,6 +32,29 @@ public struct PosterSectionShimmer: View {
     public init() {}
 }
 
-#Preview {
-    PosterSectionShimmer()
+public struct CardSection<Content: View>: View {
+    public let content: Content
+    public let focusable: Bool
+    @FocusState var isFocused: Bool
+    
+    public init(focusable: Bool = true, @ViewBuilder content: () -> Content) {
+        self.content = content()
+        self.focusable = focusable
+    }
+    
+    public var body: some View {
+        VStack {
+            VStack {
+                content
+            }
+            .padding(22)
+        }
+        .focusable(focusable)
+        .focused($isFocused)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(Color.systemGrayDarker)
+        )
+        .scaleEffect(isFocused ? 1 : 0.98)
+    }
 }

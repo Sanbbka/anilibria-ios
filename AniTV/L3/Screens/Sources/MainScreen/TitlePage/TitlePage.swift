@@ -52,8 +52,12 @@ class SeriesPage: Reducer {
 }
 
 public struct SeriesPageView: View {
+    @Namespace var seriesPageView
+    
     let store: StoreOf<SeriesPage>
     let container: DIContainer
+    
+    @FocusState var isFocused
     
     var episodes: [Episode] {
         store.series.playlist.compactMap { Episode(videoURL: $0.video.first?.value, number: $0.title) }
@@ -72,52 +76,76 @@ public struct SeriesPageView: View {
     
     public var body: some View {
         VStack {
-            ForEach(Array(store.series.names.enumerated()), id: \.offset) { index, text in
-                if index == .zero {
-                    Text(text)
-                        .font(.headline)
-                        .multilineTextAlignment(.leading)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                } else {
-                    Text(text)
-                        .foregroundColor(.secondary)
-                        .font(.subheadline)
-                        .multilineTextAlignment(.leading)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+            Group {
+                CardSection {
+                    Group {
+                        ForEach(Array(store.series.names.enumerated()), id: \.offset) { index, text in
+                            if index == .zero {
+                                Text(text)
+                                    .font(.headline)
+                                    .multilineTextAlignment(.leading)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            } else {
+                                Text(text)
+                                    .foregroundColor(.secondary)
+                                    .font(.subheadline)
+                                    .multilineTextAlignment(.leading)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                        }
+                    }.focusable()
                 }
-            }
-            EpisodesListView(episodes: episodes)
-            let attributedString = try? AttributedString(store.series.desc ?? NSAttributedString(), including: \.uiKit)
-            
-            // Используем AttributedString в SwiftUI Text
-            if let attributedString = attributedString {
-                Text(attributedString)
-                    .foregroundColor(.primary)
-                    .font(.caption)
-                    .multilineTextAlignment(.leading)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            } else {
-                Text("Failed to convert NSAttributedString to AttributedString")
-            }
-            if !moreSeasons.isEmpty {
-                Text("Еще сезоны:")
-                    .font(.title2)
-                    .multilineTextAlignment(.leading)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                
-                ForEach(moreSeasons, id: \.title) { season in
-                    Text(season.title)
-                        .font(.title3)
-                        .multilineTextAlignment(.leading)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
-            }
-            
-            Spacer()
+                ScrollView (.vertical, showsIndicators: false) {
+                    EpisodesListView(episodes: episodes)
+                    let texts = store.series.desc?.string.split(separator: "\n\n") ?? []
+                    
+                    if let string = texts.first {
+                        CardSection {
+                            Text(string)
+                                .foregroundColor(.primary)
+                                .font(.caption)
+                                .multilineTextAlignment(.leading)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                    }
+                    if !moreSeasons.isEmpty {
+                        Text("Еще сезоны:")
+                            .font(.headline)
+                            .multilineTextAlignment(.leading)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(22)
+                            .background(Color.primary)
+                            .foregroundColor(.cyan)
+                            .scaleEffect(isFocused ? 1 : 0.98)
+                            .focused($isFocused)
+                            .focusable()
+                        CardSection(focusable: false) {
+                            Text("Еще сезоны:")
+                                .font(.headline)
+                                .multilineTextAlignment(.leading)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            
+                            ForEach(moreSeasons, id: \.title) { season in
+                                Text(season.title)
+                                    .font(.headline)
+                                    .multilineTextAlignment(.leading)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(22)
+                                    .background(Color.primary)
+                                    .foregroundColor(.cyan)
+                                    .scaleEffect(isFocused ? 1 : 0.98)
+                                    .focused($isFocused)
+                                    .focusable()
+                            }
+                        }
+                    }
+                }.scrollTargetBehavior(.viewAligned)
+            }.padding(22)
         }
         .onAppear {
             store.send(.start)
         }
+        .focusScope(seriesPageView)
     }
 }
 
