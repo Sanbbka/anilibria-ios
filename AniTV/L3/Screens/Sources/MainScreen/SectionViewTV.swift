@@ -48,14 +48,20 @@ public struct SectionTVReducer {
                     do {
                         let result = try await withCheckedThrowingContinuation { continuation in
                             self.feedService
-                                .fetchFeed(page: nextPage)
-                                .sink(onNext: { state in
-                                    continuation.resume(returning: state)
-                                }, onError: { error in
-                                    continuation.resume(with: .failure(error))
-                                }).store(in: &bag)
+                                .fetchCatalog(page: nextPage, filter: SeriesFilter(sorting: .newest, isCompleted: true))
+                                .sink { series in
+                                    continuation.resume(returning: series)
+                                }.store(in: &bag)
+                                              
+//                                .fetchFeed(page: nextPage)
+//                                .sink(onNext: { state in
+//                                    continuation.resume(returning: state)
+//                                }, onError: { error in
+//                                    continuation.resume(with: .failure(error))
+//                                }).store(in: &bag)
                         }
-                        let series = result.compactMap { $0.series }
+                        let series = result //result.compactMap { $0.series }
+//                        let series = result.compactMap { $0.series }
                         if series.isEmpty {
                             await send(.error)
                         } else {

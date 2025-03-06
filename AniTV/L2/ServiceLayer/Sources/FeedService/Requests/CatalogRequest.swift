@@ -25,6 +25,14 @@ public enum SeriesSorting: String {
 }
 
 public struct SeriesFilter: Encodable, Equatable {
+    public init(genres: Set<String> = [], years: Set<String> = [], seasons: Set<String> = [], sorting: SeriesSorting = .mostPopularity, isCompleted: Bool = false) {
+        self.genres = genres
+        self.years = years
+        self.seasons = seasons
+        self.sorting = sorting
+        self.isCompleted = isCompleted
+    }
+    
     var genres: Set<String> = []
     var years: Set<String> = []
     var seasons: Set<String> = []

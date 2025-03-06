@@ -20,6 +20,7 @@ nonisolated(unsafe) var dependencyConfigurationContainer: DIContainer  = {
 }()
 
 struct ContentView: View {
+    let container = DependencyContainer(container: dependencyConfigurationContainer)
     let store = Store(
         initialState: AniTVReducer.State()) {
             AniTVReducer(
@@ -33,5 +34,6 @@ struct ContentView: View {
             store: store,
             container: dependencyConfigurationContainer
         )
+        .environmentObject(container)
     }
 }

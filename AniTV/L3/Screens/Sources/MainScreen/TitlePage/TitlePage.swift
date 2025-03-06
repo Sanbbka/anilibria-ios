@@ -53,7 +53,13 @@ class SeriesPage: Reducer {
 
 extension Series {
     var episodes: [Episode] {
-        playlist.compactMap { Episode(videoURL: $0.video[$0.supportedQualities().first ?? .fullHd], number: $0.title) }
+        playlist.compactMap {
+            Episode(
+                metadata: metadata(subtitile: $0.title),
+                videoURL: $0.video[$0.supportedQualities().first ?? .fullHd],
+                number: $0.title
+            )
+        }
     }
     
     var moreSeasons: [(title: String, url: URL)] {
@@ -63,6 +69,17 @@ extension Series {
     var descriptionTexts: String? {
         let texts = desc?.string.split(separator: "\n\n") ?? []
         return texts.first.map(String.init)
+    }
+    
+    func metadata(subtitile: String?) -> Metadata {
+        .init(
+            title: names.first,
+            subtitle: subtitile,
+            image: nil,
+            description: descriptionTexts,
+            rating: nil,
+            genre: genres.joined(separator: ", ")
+        )
     }
 }
 
@@ -75,7 +92,7 @@ public struct SeriesPageView: View {
     @FocusState var isFocused
     
     var episodes: [Episode] {
-        store.series.episodes
+        store.series.episodes.reversed()
     }
     
     var moreSeasons: [(title: String, url: URL)] {
