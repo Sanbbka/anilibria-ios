@@ -11,6 +11,7 @@ import ComposableArchitecture
 import App
 import AppDependencies
 import DITranquillity
+import ServiceLayer
 
 nonisolated(unsafe) var dependencyConfigurationContainer: DIContainer  = {
     let config = DependenciesConfigurationBase()

@@ -1,66 +1,88 @@
-/// The `SearchView` shows an example of a simple search function.
-struct SearchView: View {
-    /// When someone enters text into the search field, the system stores it
-    /// here.
-    @State var searchTerm: String = ""
-    
-    /// The view organizes a set of assets into a `Dictionary` to provide a
-    /// lookup table that maps keywords to assets.
-    var assets: [String: [Asset]] = Asset.lookupTable
+//
+//  SearchView.swift
+//  Screens
+//
+//  Created by Alexander Drovnyashin on 6/3/25.
+//
 
-    /// The assets to use in the `ForEach` come from here.
-    ///
-    /// If `searchTerm` is empty, this property flattens the lookup table into
-    /// an array of assets and removes any duplicates.
-    ///
-    /// If there's a search term, the property performs the same operation, but
-    /// first it filters out any items with keys that don't match the search
-    /// term.
-    var matchingAssets: [Asset] {
-        if searchTerm.isEmpty {
-            assets.values
-                .flatMap { $0 }
-                .reduce(into: []) {
-                    if !$0.contains($1) {
-                        $0.append($1)
-                    }
-                }
-        } else {
-            assets
-                .filter { $0.key.contains(searchTerm) }
-                .flatMap { $0.value }
-                .reduce(into: []) {
-                    if !$0.contains($1) {
-                        $0.append($1)
-                    }
-                }
+import Common
+import SwiftUI
+import Kingfisher
+import Components
+import ServiceLayer
+import DITranquillity
+import Combine
+
+@MainActor
+class SearchViewModel: ObservableObject {
+    @Published
+    var posters: [PosterModel] = []
+    var series: [Series] = []
+    
+    var diContainer: DIContainer? {
+        didSet {
+            feedService = diContainer?.resolve()
         }
     }
-
-    /// For a stable list in the display, this takes any assets matching the
-    /// current search term and sorts them by title.
-    var sortedMatchingAssets: [Asset] {
-        matchingAssets
-            .sorted(using: SortDescriptor(\.title, comparator: .lexical))
+    
+    private var feedService: FeedService?
+    private var cancellable = Set<AnyCancellable>()
+    
+    func loadData(searchTerm: String = "") {
+        guard !searchTerm.isEmpty else {
+            series = []
+            return
+        }
+        feedService?.search(query: searchTerm).sink(receiveValue: { [weak self] series in
+            self?.posters = series.compactMap { PosterModel(id: $0.id, title: $0.names.first ?? "", description: $0.desc?.string ?? "", posterUrl: $0.poster) }
+            self?.series = series
+        }).store(in: &cancellable)
     }
+}
 
-    /// This determines suggested search terms by examining all the keys
-    /// (keywords) in the lookup table and filtering for matches against the
-    /// current search term.
-    var suggestedSearchTerms: [String] {
-        guard !searchTerm.isEmpty else { return [] }
-        return assets.keys.filter { $0.contains(searchTerm) }
-    }
-
+struct CardView: View {
+    let poster: PosterModel
+    let action: () -> Void
+    
+    @FocusState
+    var isFocused
+    
     var body: some View {
+        Button(action: action) {
+            KFImage(poster.posterUrl)
+                .resizable()
+                .aspectRatio(250 / 375, contentMode: .fit)
+            
+            Text(poster.title)
+                .lineLimit(2, reservesSpace: true)
+        }
+    }
+}
+
+let columns: [GridItem] = Array(repeating: .init(.flexible(), spacing: 40), count: 6)
+
+public struct SearchView: View {
+    @EnvironmentObject
+    var dependencyContainer: DependencyContainer
+    
+    @State
+    var searchTerm: String = ""
+    
+    @ObservedObject
+    private var viewModel = SearchViewModel()
+    
+    @State
+    private var poster: PosterModel?
+    
+    @State
+    private var selectedTabIndex = 0
+    
+    public var body: some View {
         ScrollView(.vertical) {
-            LazyVGrid(columns: columns, spacing: 40) {
-                ForEach(sortedMatchingAssets) { asset in
-                    Button {} label: {
-                        asset.landscapeImage
-                            .resizable()
-                            .aspectRatio(16 / 9, contentMode: .fit)
-                        Text(asset.title)
+            LazyVGrid(columns: columns, spacing: 60) {
+                ForEach(viewModel.posters) { poster in
+                    CardView(poster: poster) {
+                        self.poster = poster
                     }
                 }
             }
@@ -68,10 +90,21 @@ struct SearchView: View {
         }
         .scrollClipDisabled()
         .searchable(text: $searchTerm)
-        .searchSuggestions {
-            ForEach(suggestedSearchTerms, id: \.self) { suggestion in
-                Text(suggestion)
+        .onAppear {
+            viewModel.diContainer = dependencyContainer.container
+        }.onChange(of: searchTerm) { oldValue, newValue in
+            viewModel.loadData(searchTerm: searchTerm)
+        }
+        .fullScreenCover(item: $poster) { item in
+            if let series = viewModel.series.first(where: { $0.id == item.id }) {
+                ZStack {
+                    Color.appBackground
+                        .ignoresSafeArea()
+                    SeriesPageView(series: series, container: dependencyContainer.container)
+                }
             }
         }
     }
+    
+    public init() {}
 }
