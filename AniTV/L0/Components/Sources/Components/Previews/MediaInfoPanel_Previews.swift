@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct MediaInfoPanel_Previews: PreviewProvider {
-    static var previews: some View {
+public struct MediaInfoPanel_Previews: PreviewProvider {
+    public static var previews: some View {
         MediaInfoPanel(
             title: "Sample Series",
             year: "2023",

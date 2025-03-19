@@ -6,6 +6,9 @@ import DITranquillity
 import Combine
 import Components
 
+public let back_1 = Image("back_1", bundle: .module)
+public let back_2 = Image("back_2", bundle: .module)
+
 @Reducer
 class SeriesPage: Reducer {
     init(container: DIContainer) {
@@ -103,11 +106,14 @@ public struct SeriesPageView: View {
         store.series.descriptionTexts
     }
     
-    public init(series: Series, container: DIContainer) {
+    var isFullScreen: Bool
+    
+    public init(series: Series, container: DIContainer, isFullScreen: Bool = false) {
         store = Store(initialState: SeriesPage.State(series: series), reducer: {
             SeriesPage(container: container)
         })
         self.container = container
+        self.isFullScreen = isFullScreen
     }
     
     public var body: some View {
@@ -165,6 +171,30 @@ public struct SeriesPageView: View {
             store.send(.start)
         }
         .focusScope(seriesPageView)
+        .background {
+            if isFullScreen {
+                Image("back_2", bundle: .module)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .overlay {
+                        Rectangle()
+                            .fill(.ultraThinMaterial)
+                            .mask {
+                                LinearGradient(
+                                    stops: [
+                                        .init(color: .white, location: 0.2),
+                                        .init(color: .white.opacity(0.7), location: 0.4),
+                                        .init(color: .white.opacity(0), location: 0.56),
+                                        .init(color: .white.opacity(0), location: 0.7),
+                                        .init(color: .white.opacity(0.25), location: 0.8)
+                                    ],
+                                    startPoint: .bottom, endPoint: .top
+                                )
+                            }
+                    }
+                    .ignoresSafeArea()
+            }
+        }
     }
 }
 

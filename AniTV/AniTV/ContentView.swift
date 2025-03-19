@@ -12,6 +12,7 @@ import App
 import AppDependencies
 import DITranquillity
 import ServiceLayer
+import Components
 
 nonisolated(unsafe) var dependencyConfigurationContainer: DIContainer  = {
     let config = DependenciesConfigurationBase()

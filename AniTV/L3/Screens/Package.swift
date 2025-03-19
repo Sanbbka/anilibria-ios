@@ -70,7 +70,8 @@ let package = Package(
                 "ServiceLayer",
                 "Kingfisher",
                 "Components"
-            ]
+            ],
+            resources: [.process("Resources")]
         ),
     ]
 )

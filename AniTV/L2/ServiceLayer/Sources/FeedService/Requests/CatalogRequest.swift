@@ -19,7 +19,7 @@ struct CatalogRequest: BackendAPIRequest {
     }
 }
 
-public enum SeriesSorting: String {
+public enum SeriesSorting: String, CaseIterable, Hashable {
     case mostPopularity = "1"
     case newest = "2"
 }

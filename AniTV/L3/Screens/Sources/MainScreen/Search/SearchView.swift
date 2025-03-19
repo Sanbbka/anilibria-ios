@@ -43,10 +43,7 @@ class SearchViewModel: ObservableObject {
 struct CardView: View {
     let poster: PosterModel
     let action: () -> Void
-    
-    @FocusState
-    var isFocused
-    
+        
     var body: some View {
         Button(action: action) {
             KFImage(poster.posterUrl)
@@ -73,10 +70,7 @@ public struct SearchView: View {
     
     @State
     private var poster: PosterModel?
-    
-    @State
-    private var selectedTabIndex = 0
-    
+        
     public var body: some View {
         ScrollView(.vertical) {
             LazyVGrid(columns: columns, spacing: 60) {
@@ -100,7 +94,7 @@ public struct SearchView: View {
                 ZStack {
                     Color.appBackground
                         .ignoresSafeArea()
-                    SeriesPageView(series: series, container: dependencyContainer.container)
+                    SeriesPageView(series: series, container: dependencyContainer.container, isFullScreen: true)
                 }
             }
         }
