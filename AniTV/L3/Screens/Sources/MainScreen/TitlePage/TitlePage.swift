@@ -19,10 +19,13 @@ class SeriesPage: Reducer {
     @ObservableState
     struct State {
         var series: Series
+        
+        var newSeries: Series?
     }
     enum Action {
         case start
         case loaded(Series)
+        case load(URL)
     }
     
     var body: some Reducer<State, Action> {
@@ -44,6 +47,22 @@ class SeriesPage: Reducer {
                 }
             case .loaded(let series):
                 state.series = series
+                
+            case .load(let url):
+                if let code = URLHelper.isRelease(url: url) {
+                    return .run { send in
+                        var bag = Set<AnyCancellable>()
+                        let result = try await withCheckedThrowingContinuation { continuation in
+                            self.feedService.series(with: code)
+                                .sink(onNext: { item in
+                                    continuation.resume(returning: item)
+                                })
+                                .store(in: &bag)
+                        }
+                        
+                        await send(.loaded(result))
+                    }
+                }
             }
             
             return .none
@@ -151,14 +170,7 @@ public struct SeriesPageView: View {
                                 .multilineTextAlignment(.leading)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             
-                            VStack(alignment: .leading, spacing: 12) {
-                                ForEach(moreSeasons, id: \.title) { season in
-                                    HStack {
-                                        BaseButton(string: season.title)
-                                        Spacer()
-                                    }
-                                }
-                            }
+                            moreSeasonsView
                         }
                     }
                 }.scrollTargetBehavior(.viewAligned)
@@ -193,6 +205,19 @@ public struct SeriesPageView: View {
                             }
                     }
                     .ignoresSafeArea()
+            }
+        }
+    }
+    
+    var moreSeasonsView: some View {
+        VStack(alignment: .leading, spacing: 12) {
+            ForEach(moreSeasons, id: \.title) { season in
+                HStack {
+                    BaseButton(string: season.title) {
+                        store.send(.load(season.url))
+                    }
+                    Spacer()
+                }
             }
         }
     }
