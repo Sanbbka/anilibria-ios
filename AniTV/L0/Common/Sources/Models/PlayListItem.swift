@@ -71,10 +71,10 @@ public final class PlaylistItem: NSObject, Decodable {
 }
 
 public extension Skips {
-    func canSkip(time: Int, length: Int) -> Bool {
+    func canSkip(time: Int) -> Bool {
         [opening, ending]
             .compactMap { $0 }
-            .compactMap { Range(uncheckedBounds: ($0.lowerBound, $0.lowerBound + length)) }
+            .compactMap { Range(uncheckedBounds: ($0.lowerBound, $0.upperBound)) }
             .contains(where: { $0.contains(time) })
     }
 

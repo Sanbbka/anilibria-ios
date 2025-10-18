@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import SwiftUICore
+import SwiftUI
 
 public extension Color {
     static let appText = Color(red: 0.98, green: 0.96, blue: 0.92)

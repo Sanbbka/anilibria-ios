@@ -79,7 +79,8 @@ extension Series {
             Episode(
                 metadata: metadata(subtitile: $0.title),
                 videoURL: $0.video[$0.supportedQualities().first ?? .fullHd],
-                number: $0.title
+                number: $0.title,
+                itemPlaylist: $0
             )
         }
     }
