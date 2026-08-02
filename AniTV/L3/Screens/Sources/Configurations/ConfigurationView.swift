@@ -6,7 +6,6 @@ public struct ConfigurationView: View {
         ProgressView {
             VStack {
                 Text("Загрузка конфигурации")
-                Text("А еще Марина солнышко")
             }
         }
     }
