@@ -14,12 +14,16 @@ public protocol ConfigRepository {
     func set(config: AniConfig)
     func getConfig() -> AniConfig?
 
+    func set(configInfo: AniConfigInfo)
+    func getConfigInfo() -> AniConfigInfo?
+
     func getCurrentSettings() -> AniSettings?
     func setCurrent(settings: AniSettings)
 }
 
 final class ConfigRepositoryImp: ConfigRepository {
     private let keyConfig: String = "ANI_CONFIG_KEY"
+    private let keyConfigInfo: String = "ANI_CONFIG_INFO_KEY"
     private let keySettings: String = "ANI_SETTINGS_KEY"
 
     func set(config: AniConfig) {
@@ -28,6 +32,14 @@ final class ConfigRepositoryImp: ConfigRepository {
 
     func getConfig() -> AniConfig? {
         UserDefaults.standard[keyConfig]
+    }
+
+    func set(configInfo: AniConfigInfo) {
+        UserDefaults.standard[keyConfigInfo] = configInfo
+    }
+
+    func getConfigInfo() -> AniConfigInfo? {
+        UserDefaults.standard[keyConfigInfo]
     }
 
     func setCurrent(settings: AniSettings) {

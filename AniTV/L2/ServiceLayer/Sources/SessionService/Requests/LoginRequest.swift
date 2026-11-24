@@ -1,4 +1,4 @@
-struct LoginRequest: BackendAPIRequest {
+struct LoginRequest: LegacyBackendAPIRequest {
     typealias ResponseObject = ServerResponse
 
     private(set) var endpoint: String = "/public/login.php"

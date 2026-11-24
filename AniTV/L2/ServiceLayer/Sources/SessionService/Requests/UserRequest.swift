@@ -1,4 +1,4 @@
-struct UserRequest: BackendAPIRequest {
+struct UserRequest: LegacyBackendAPIRequest {
     typealias ResponseObject = User
 
     private(set) var endpoint: String = "/public/api/index.php"

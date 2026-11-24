@@ -1,4 +1,4 @@
-struct CommentsRequest: BackendAPIRequest {
+struct CommentsRequest: LegacyBackendAPIRequest {
     typealias ResponseObject = VKComments
 
     private(set) var endpoint: String = "/public/api/index.php"

@@ -1,4 +1,4 @@
-struct LogoutRequest: BackendAPIRequest {
+struct LogoutRequest: LegacyBackendAPIRequest {
     typealias ResponseObject = Unit
 
     private(set) var endpoint: String = "/public/logout.php"

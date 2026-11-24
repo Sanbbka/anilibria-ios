@@ -1,4 +1,4 @@
-struct YearsRequest: BackendAPIRequest {
+struct YearsRequest: LegacyBackendAPIRequest {
     typealias ResponseObject = [String]
 
     private(set) var endpoint: String = "/public/api/index.php"

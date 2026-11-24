@@ -1,4 +1,4 @@
-struct CatalogRequest: BackendAPIRequest {
+struct CatalogRequest: LegacyBackendAPIRequest {
     typealias ResponseObject = PageData<Series>
 
     private(set) var endpoint: String = "/public/api/index.php"

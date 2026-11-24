@@ -1,4 +1,4 @@
-struct ScheduleRequest: BackendAPIRequest {
+struct ScheduleRequest: LegacyBackendAPIRequest {
     typealias ResponseObject = [Schedule]
 
     private(set) var endpoint: String = "/public/api/index.php"

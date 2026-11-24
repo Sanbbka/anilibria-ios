@@ -1,4 +1,4 @@
-struct RandomSeriesRequest: BackendAPIRequest {
+struct RandomSeriesRequest: LegacyBackendAPIRequest {
     typealias ResponseObject = Series
 
     private(set) var endpoint: String = "/public/api/index.php"

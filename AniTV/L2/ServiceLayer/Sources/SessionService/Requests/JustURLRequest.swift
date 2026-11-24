@@ -1,6 +1,6 @@
 import Foundation
 
-struct JustURLRequest<T: Decodable>: BackendAPIRequest {
+struct JustURLRequest<T: Decodable>: LegacyBackendAPIRequest {
     typealias ResponseObject = T
 
     private(set) var baseUrl: String = ""

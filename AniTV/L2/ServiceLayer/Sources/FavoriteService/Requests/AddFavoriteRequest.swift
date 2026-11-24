@@ -1,4 +1,4 @@
-struct AddFavoriteRequest: BackendAPIRequest {
+struct AddFavoriteRequest: LegacyBackendAPIRequest {
     typealias ResponseObject = Unit
 
     private(set) var endpoint: String = "/public/api/index.php"

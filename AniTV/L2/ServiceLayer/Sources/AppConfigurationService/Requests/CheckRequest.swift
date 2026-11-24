@@ -1,4 +1,4 @@
-struct CheckRequest: BackendAPIRequest {
+struct CheckRequest: LegacyBackendAPIRequest {
     typealias ResponseObject = Unit
 
     private(set) var endpoint: String = "/public/api/index.php"

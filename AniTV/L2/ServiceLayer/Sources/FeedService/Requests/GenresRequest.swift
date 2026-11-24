@@ -1,4 +1,4 @@
-struct GenresRequest: BackendAPIRequest {
+struct GenresRequest: LegacyBackendAPIRequest {
     typealias ResponseObject = [String]
 
     private(set) var endpoint: String = "/public/api/index.php"

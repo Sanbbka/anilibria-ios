@@ -1,4 +1,4 @@
-struct NewsRequest: BackendAPIRequest {
+struct NewsRequest: LegacyBackendAPIRequest {
     typealias ResponseObject = PageData<News>
 
     private(set) var endpoint: String = "/public/api/index.php"
