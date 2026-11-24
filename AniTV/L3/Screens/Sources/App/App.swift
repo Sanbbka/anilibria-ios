@@ -78,13 +78,18 @@ public struct AniTVView: View {
                     .tabItem {
                         Text("Избранное")
                     }
-                Text("Прочее (не реализовано)")
+                profileContent()
                     .tag(4)
                     .tabItem {
-                        Text("Прочее")
+                        Text("Профиль")
                     }
             }
         }
+    }
+
+    @ViewBuilder
+    func profileContent() -> some View {
+        ProfileTabView(container: dependencyContainer.container)
     }
     
     @ViewBuilder
